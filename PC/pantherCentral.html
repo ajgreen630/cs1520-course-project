@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="./pcStyle.css">
+    <script src="script.js"></script>
+    <div class="head">
+        <h1>Welcome to Panther Central</h1>
+        <h4>Press the play button to ACTIVATE</h4>
+    </div>
+</head>
+<body>
+    <div class="audio">
+    <audio src="./PC.m4a" controls AutoPlay loop>
+        <embed 
+        src="./PC.m4a"
+        width="300"
+        height="90"
+        loop="true"
+        autostart="true">
+    </audio>
+    </div>
+    <div class="game">
+        <br>
+        <h2>I am the virtual assistant, in order to help you, please solve this anagram.</h2>
+        <br>
+        <form name="anagram" onsubmit="return validateForm()" method="post">
+            <h3></h3>
+             <input type="text" name="fname">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+

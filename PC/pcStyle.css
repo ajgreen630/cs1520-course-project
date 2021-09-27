@@ -1,0 +1,31 @@
+/* 
+#id
+.class 
+*/
+body{
+    background-image: url("pcinside.jpg");
+}
+.head{
+    background-color: rgb(226, 162, 43);
+    width:700px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    border-radius: 3cm;
+}
+.audio{
+    width: 300px;
+    margin: auto;
+}
+.game{
+    width: 800px;
+    height: 800px;
+    margin: auto;
+    background-color: rgb(42, 56, 139);
+    opacity: 0.9;
+    padding-left: 45px;
+    color: wheat;
+}
+.anagram{
+    opacity: 0.8;
+}

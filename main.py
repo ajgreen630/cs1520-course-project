@@ -2,7 +2,7 @@ from flask import Flask, Response, redirect
 
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)
-# 2. gcloud app deploy
+# 2. gcloud app deploy [us-east1]
 # 3. dev_appserver.py app.yaml
 
 app = Flask(__name__)

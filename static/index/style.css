@@ -1,5 +1,6 @@
 body {
-    font-family: 'Times New Roman', Times, serif
+    font-family: 'Times New Roman', Times, serif;
+    background-image: linear-gradient(#020024, #090979, #00d4ff);
 }
 
 #game_title {
@@ -7,6 +8,7 @@ body {
     justify-content: center;
     text-align: center;
     flex-direction: column;
+    color: #f2c746;
 }
 #litchfield_towers {
     display: flex;
@@ -17,21 +19,28 @@ body {
    justify-content: center;
    text-align: center;
    flex-direction: column;
+   color: white;
 }
 
-#story .start_button {
-    display: flex;
-    margin: auto;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #f2ba35; /* Gold */
+button {
+    background-color: #f2c746;
     border: none;
-    color: white;
+    color: navy;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    
+
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+
+    cursor: pointer;
+}
+button:hover{
+    background-color: black;
+    color: #f2c746;
 }
 

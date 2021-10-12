@@ -1,4 +1,206 @@
-   
+/* 
+colors:
+Bright yellow: ca9703
+light yellow : d5ad36
+offwhite:  f4f2C9
+light blue: 4488bf
+dark blue: 265999
+*/
+
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 250px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #0e2b4e; 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  text-align: center;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 250px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+   background-color: #f4f2C9;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.sidenav img{
+    width: 240px;
+    border-radius: 12px;
+    opacity: 130%;
+    margin-left: 5px;
+}
+img{
+    width:100%;
+    opacity: 50%;
+}
+.heading {
+  text-align: center;
+  font-size: 70px;
+  background-color: #d5ad36;
+  width: 78%;
+  border-radius: 8px;
+  color: white;
+  position: fixed;
+  z-index: 1; 
+  top: 0; 
+  margin-top: 10px;
+}
+.main{
+    margin-top: 100px ;
+}
+
+/* -------------------------Panther central-------------------------- */
+
+
+.head{
+    background-color: rgb(226, 162, 43);
+    width:700px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    border-radius: 3cm;
+}
+.audio{
+    width: 300px;
+    margin: auto;
+}
+.game{
+    width: 800px;
+    height: 800px;
+    margin: auto;
+    background-color: rgb(42, 56, 139);
+    opacity: 0.9;
+    padding-left: 45px;
+    color: wheat;
+}
+.anagram{
+    opacity: 0.8;
+}
+
+div h1{
+	font-size: 40px;
+	text-align: center;
+	color: rgb(12, 131, 241);
+}
+div h4{
+	font-size: 20px; 
+	text-align: center;
+	color: rgb(202, 191, 191);
+}
+form{
+	width: 300px;
+	margin: auto;
+    padding-bottom: 90px;
+}
+input{
+	width: 100%;
+	height: 40px;
+}
+
+.myButton {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:9px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:26px;
+	padding:21px 60px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+    margin-left: 280px;
+    /* padding-top: 90px; */
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/* -------------------------Hillman-------------------------- */
+	h1,h2{
+		color: blue;
+		background-color: gold;
+		text-align: center;
+	}
+
+	.headImage{
+		text-align: center;
+		background-color: black;
+	}
+	.img {
+		display: inline-block;
+		text-align: center;
+	}
+
+	.head{
+		color: white;
+		background-color: black;
+	}
+
+	.startButton{
+		border: box-shadow;
+		border-color: black;
+		text-align: center;
+		display: inline-block;
+		font-size: 16px;
+		margin: 12px 6px;
+		transition-duration: 0.4s;
+		cursor: pointer;
+	}
+
+	.button {
+		color: gold;
+		background-color: blue;
+		cursor: pointer;
+		text-decoration: underline;
+		padding: 10px 32px;
+		font-size: 16px;
+		border-radius: 8px;
+		margin: 0;
+		position: absolute;
+		right: 42%;
+		-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+
+	.button:hover{
+		color: blue;
+		background-color: gold;
+	}
+/* -------------------------Sennott Square-------------------------- */
+
 body {
     font-family: 'Times New Roman', Times, serif;
     background-image: linear-gradient(#020024, #090979, #00d4ff);;
@@ -45,3 +247,4 @@ button:hover{
     background-color: black;
     color: #f2c746;
 }
+        

@@ -54,10 +54,10 @@ dark blue: 265999
     opacity: 130%;
     margin-left: 5px;
 }
-img{
+/* img{
     width:100%;
     opacity: 50%;
-}
+} */
 .heading {
   text-align: center;
   font-size: 70px;
@@ -155,18 +155,25 @@ input{
 		text-align: center;
 	}
 
-	.headImage{
-		text-align: center;
-		background-color: black;
+    .headhillman{
+		width: 70%;
+        text-align: center;
+        margin-left: 130px;
 	}
-	.img {
-		display: inline-block;
-		text-align: center;
-	}
+    .headhillman h4{
+        color: white;
+        background-color: #d5ad36;
+        width: 78%;
+        border-radius: 8px;
+        margin: auto;
+    }
+    .map{
+        align-content: center;
+        padding-bottom: 40px;
+    }
 
-	.head{
-		color: white;
-		background-color: black;
+    .hillman1 {
+        margin-left: 130px;
 	}
 
 	.startButton{

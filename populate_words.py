@@ -11,7 +11,7 @@ def main():
     word_list = sys.argv[1]
 
     ws = WordScrambler()
-    ws.store_words()
+    ws.store_words(word_list)
 
 if __name__ == "__main__":
     main()

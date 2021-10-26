@@ -22,7 +22,9 @@ class WordScrambler():
 
         word_entity = datastore.Entity(client.key('Word'))
         word_entity.update(
-            "text" : word
+            {
+                "text":word,
+            }
         )
         return word_entity
 

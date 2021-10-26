@@ -24,6 +24,18 @@ def get_word_scramble():
     scrambled_word = ws.get_scrambled_word(word)
     return flask.render_template('panther-central.html', page_title='Panther Central', scramble_val=scrambled_word)
 
+@app.route('/hillman-library.html')
+def hillman_library():
+    return flask.render_template('hillman-library.html', page_title='Hillman Library')
+
+@app.route('/hillman2.html')
+def hillman2():
+    return flask.render_template('hillman2.html', page_title='Hillman Library')
+
+@app.route('/hillman3.html')
+def hillman3():
+    return flask.render_template('hillman3.html', page_title='Hillman Library')
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
 

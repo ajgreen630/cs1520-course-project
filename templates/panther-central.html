@@ -1,0 +1,30 @@
+{% extends '_base.html'}
+{% block content %}
+<!-- Page content -->
+<div class="main">
+    <div class="heading">
+        Welcome to Panther Central
+    </div>
+    <div class="audio">
+        <audio src="../static/audio/PC.m4a" controls AutoPlay loop>
+            <embed 
+                src="./PC.m4a"
+                width="300"
+                height="90"
+                loop="true"
+                autostart="true">
+            </audio>
+    </div>
+    <div class="game">
+        <br><h2>I am the virtual assistant, in order to help you, please solve this anagram.</h2><br>
+        <h4>Your word is...</h4>
+        <h1>{{ scramble_val }}</h1> <!-- Words are scrambled and displayed here... -->
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <input type="text" name="fname">
+            <input type="submit" value="Submit">
+        </form>
+        <a href="../HillmanLibrary/HillmanLibrary.html" class="myButton">Next Level</a>
+    </div>
+</div>
+{% endblock %}
+

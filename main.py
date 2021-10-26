@@ -1,12 +1,12 @@
 import flask
-from word_scrambler import WordScrambler
+import word_scrambler
 
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)
 # 2. gcloud app deploy [us-east1]
 # 3. dev_appserver.py app.yaml
 
-ws = WordScrambler()
+ws = word_scrambler.WordScrambler()
 word = ''
 scrambled_word = ''
 

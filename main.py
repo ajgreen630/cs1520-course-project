@@ -10,7 +10,7 @@ ws = WordScrambler()
 word = ''
 scrambled_word = ''
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 @app.route('/')
 @app.route('/index.html')

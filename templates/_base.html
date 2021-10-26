@@ -1,0 +1,35 @@
+<html>
+    <head>
+        {# 
+        
+            This is a comment - it won't show up in the HTML.
+
+            Templates allow us to dynamically generate HTML - this file will be 
+            interpreted and the output will be sent to the browser.  View the page 
+            source in your browser to see what actually comes through.
+            
+            The line below inserts the "page_title" variable into the HTML output.
+            
+        #}
+        <link rel="stylesheet" href="../static/css/style.css">
+        
+        <title>{{page_title}}</title>
+
+        <!-- Side Navigation -->
+        <div class="sidenav">
+            <img src="../static/images/logo.jpg">
+            <a href="panther-central.html">Panther Central</a>
+            <a href="hillman-library.html">Hillman Library</a>
+            <a href="sennott-square.html">Sennott Square</a>
+            <a href="#">Give Up</a>
+        </div>
+    </head>
+    <body>
+        {#
+
+            A "block" can be replaced when we render this template.
+
+        #}
+        {% block content %}{% endblock %}
+    </body>
+</html>

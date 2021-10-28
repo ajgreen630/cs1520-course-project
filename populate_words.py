@@ -9,9 +9,8 @@ python3 populate_words.py ["WORD1", "WORD2", "WORD3", ...]
 """
 
 def main():
-    #word_list = sys.argv[1]
-    logging.error('populating database')
-    word_list = ["OAKLAND", 'PITTSBURGH']
+    word_list = ['OAKLAND', 'PITTSBURGH', 'SCHENLEY', 'FRICK', 'MEYRAN', 'FORBES', 'CARNEGIE',
+                'PROGRAMMING', 'COMPUTER SCIENCE', 'JAVASCRIPT']
     ws = WordScrambler()
     ws.store_words(word_list)
     logging.error('finished populating database')

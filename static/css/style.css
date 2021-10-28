@@ -48,6 +48,17 @@
     /* padding-left: 45px; */
     color: white;
 }
+.timer{
+    background-color: rgb(226, 162, 43);
+    width:800px;
+    height: 800px;
+    margin: auto;
+    text-align: center;
+    background-color: rgb(42, 56, 139);
+    opacity: 0.9;
+    color: wheat;
+    border-radius: 3cm;
+}
 .anagram{
     opacity: 0.8;
 }

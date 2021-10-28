@@ -1,125 +1,84 @@
-/* 
-colors:
-Bright yellow: ca9703
-light yellow : d5ad36
-offwhite:  f4f2C9
-light blue: 4488bf
-dark blue: 265999
-*/
 
-/* The sidebar menu */
-.sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 250px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #0e2b4e; 
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  text-align: center;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
+*{
+    background-color: #0b0e07;
 }
 
 /* Style page content */
 .main {
-  margin-left: 250px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
-   background-color: #f4f2C9;
+   margin-left: 10px;
+   padding: 0px 10px;
+   background-color: #0b0e07;
+   margin-top: 10px;
 }
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.sidenav img{
-    width: 240px;
-    border-radius: 12px;
-    opacity: 130%;
-    margin-left: 5px;
-}
-/* img{
-    width:100%;
-    opacity: 50%;
-} */
-.heading {
-  text-align: center;
+.heading a {
   font-size: 70px;
-  background-color: #d5ad36;
-  width: 78%;
-  border-radius: 8px;
+  background-color: #d175b7;
   color: white;
-  position: fixed;
-  z-index: 1; 
+  z-index: 1;
   top: 0; 
-  margin-top: 10px;
+  margin-top: 30px;
 }
-.main{
-    margin-top: 100px ;
+.heading{
+    /* position:absolute; */
+   
+    text-align: center;
+    background-color: #d175b7;
+    width: 99%;
+    border-radius: 8px;
+    box-shadow:0px 0px 50px 30px #8d0b68;
+
 }
+
 
 /* -------------------------Panther central-------------------------- */
 
 
-.head{
-    background-color: rgb(226, 162, 43);
-    width:700px;
-    height: 100px;
-    margin: auto;
-    text-align: center;
-    border-radius: 3cm;
-}
 .audio{
     width: 300px;
     margin: auto;
+    background-color: transparent;
+
 }
 .game{
-    width: 800px;
+    width: 80%;
     height: 800px;
     margin: auto;
-    background-color: rgb(42, 56, 139);
+    background-color: #1c2c54;
     opacity: 0.9;
-    padding-left: 45px;
-    color: wheat;
+    /* padding-left: 45px; */
+    color: white;
 }
 .anagram{
     opacity: 0.8;
 }
 
-div h1{
-	font-size: 40px;
+div p{
+	font-size: 50px;
 	text-align: center;
-	color: rgb(12, 131, 241);
+	color: #ff95e1;
+    background-color: #1c2c54;
 }
 div h4{
-	font-size: 20px; 
+	font-size: 30px; 
 	text-align: center;
-	color: rgb(202, 191, 191);
+	color: rgb(255, 255, 255);
+    background-color: #1c2c54;
+}
+.game h2{
+    text-align: center;
+    color:#5ee6d6;
+    background-color: #1c2c54;
 }
 form{
+    background-color: #1c2c54;
 	width: 300px;
 	margin: auto;
-    padding-bottom: 90px;
+    padding-bottom: 30px;
 }
 input{
 	width: 100%;
 	height: 40px;
+    background-color: #ffffff;
 }
 
 .myButton {
@@ -133,10 +92,10 @@ input{
 	color:#ffffff;
 	font-family:Arial;
 	font-size:26px;
-	padding:21px 60px;
+	padding:14px 50px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
-    margin-left: 280px;
+    margin-left: 38%;
     /* padding-top: 90px; */
 }
 .myButton:hover {
@@ -147,36 +106,38 @@ input{
 	position:relative;
 	top:1px;
 }
-.myButton[hidden] {
-    display: none;
-}
 
 /* -------------------------Hillman-------------------------- */
-	h1,h2{
-		color: blue;
-		background-color: gold;
-		text-align: center;
-	}
 
     .headhillman{
-		width: 70%;
+		width: 80%;
         text-align: center;
         margin-left: 130px;
+        color: white;
+        background-color: transparent;
 	}
     .headhillman h4{
-        color: white;
-        background-color: #d5ad36;
+        color: #378b82;
+        background-color: #5ee6d6;
         width: 78%;
         border-radius: 8px;
         margin: auto;
     }
+    .headhillman h2{
+        background-color: transparent;
+    }
     .map{
         align-content: center;
         padding-bottom: 40px;
+        background-color: #1c2c54;
+        width: 80%;
+        margin: auto;
     }
 
     .hillman1 {
-        margin-left: 130px;
+        margin-left: 15%;
+        margin-top: 5%;
+        /* padding-left: 30px;  */
 	}
 
 	.startButton{
@@ -213,7 +174,7 @@ input{
 
 body {
     font-family: 'Times New Roman', Times, serif;
-    background-image: linear-gradient(#020024, #090979, #00d4ff);;
+    /* background-image: linear-gradient(#020024, #090979, #00d4ff);; */
 }
 
 #game_title {

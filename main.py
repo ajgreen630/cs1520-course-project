@@ -9,29 +9,28 @@ from google.cloud import datastore
 # 2. gcloud app deploy [us-east1]
 # 3. dev_appserver.py app.yaml
 
+# TODO: Add code for populating datastore if running on local (dev_appserver).
 ws = word_scrambler.WordScrambler()
-word = ''
-scrambled_word = ''
 
 app = flask.Flask(__name__)
 
+# Redirect to home.html upon first entry:
 @app.route('/')
-@app.route('/index.html')
-@app.route('/index')
+@app.route('/home.html')
+@app.route('/home')
 def root():
-    return flask.render_template('index.html', page_title='Room of Doubt')
+    return flask.render_template('home.html', page_title='Room of Doubt')
 
+# Redirect to panther-central.html:
 @app.route('/panther-central.html')
 def get_word_scramble():
-    #populate_words.main()
-    logging.error('In get word scramble')
-    word = ws.get_random_word()
-    logging.error(word)
-    scrambled_word = ws.get_scrambled_word(word)
-    logging.error(scrambled_word)
-    logging.error('rendering template')
-    return flask.render_template('panther-central.html', page_title='Panther Central', scrambled_val=scrambled_word,
-                                unscrambled_val=word)
+    word = ws.get_random_word() # Get random word from datastore.
+    scrambled_word = ws.get_scrambled_word(word)    # Scramble the word.
+
+    return flask.render_template('panther-central.html', 
+                                  page_title = 'Panther Central', 
+                                  scrambled_word = scrambled_word,
+                                  unscrambled_word = word)
 
 @app.route('/hillman-library.html')
 def hillman_library():

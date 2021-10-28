@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% block content %}
+<script type="text/javascript" src="/static/js/panther-central.js"></script>
 <div class="main">
     <div class="heading">
         Welcome to Panther Central
@@ -17,38 +18,12 @@
     <div class="game">
         <br><h2>I am the virtual assistant, in order to help you, please solve this anagram.</h2><br>
         <h4>Your word is...</h4>
-        <h1 id="scrambledVal">{{ scrambled_val }}</h1> <!-- Words are scrambled and displayed here... -->
-        <p id="unscrambledVal" hidden>{{ unscrambled_val }}</p>
+        <h1 id="scrambledWord">{{ scrambled_word }}</h1> <!-- Words are scrambled and displayed here... -->
+        <p id="unscrambledWord" hidden>{{ unscrambled_word }}</p>
 
-        <script type="text/javascript">
-            function validateForm() {
-                console.log("IN VALIDATE");
-                var guess = document.getElementByName("guess").value;
-                var html_word = document.getElementById("unscrambledVal");
-
-                //var guess = html_guess.textContent;
-                var word = html_word.textContent;
-
-                console.log(guess);
-
-
-                if (guess.toLowerCase() == word.toLowerCase()) {
-                    alert("Good Job!");
-                    return true;
-                }
-                else {
-                    alert("WRONG! Try again.");
-                    event.preventDefault();
-                    return false;
-                }
-                alert("HELLO!")
-                return true;  
-            }
-        </script>
-
-        <form name="guessForm" action="hillman-library.html">
-            <input type="text" name="guess">
-            <input type="submit" valid="Submit" onclick=validateForm()>
+        <form name="guessForm" id="guess_frm" action="hillman-library.html">
+            <input type="text" name="guess" id="guess_input" /><br>
+            <input type="submit" valid="Submit" onclick="validateForm(document.getElementById('unscrambledWord').textContent, document.getElementById('guess_input').value)" />
         </form>
     </div>
 {% endblock %}

@@ -1,5 +1,8 @@
 import flask
 import word_scrambler
+import populate_words
+import logging
+from google.cloud import datastore
 
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)
@@ -20,9 +23,15 @@ def root():
 
 @app.route('/panther-central.html')
 def get_word_scramble():
+    #populate_words.main()
+    logging.error('In get word scramble')
     word = ws.get_random_word()
+    logging.error(word)
     scrambled_word = ws.get_scrambled_word(word)
-    return flask.render_template('panther-central.html', page_title='Panther Central', scramble_val=scrambled_word)
+    logging.error(scrambled_word)
+    logging.error('rendering template')
+    return flask.render_template('panther-central.html', page_title='Panther Central', scrambled_val=scrambled_word,
+                                unscrambled_val=word)
 
 @app.route('/hillman-library.html')
 def hillman_library():

@@ -17,13 +17,38 @@
     <div class="game">
         <br><h2>I am the virtual assistant, in order to help you, please solve this anagram.</h2><br>
         <h4>Your word is...</h4>
-        <h1>{{ scramble_val }}</h1> <!-- Words are scrambled and displayed here... -->
-        <form name="myForm" onsubmit="return validateForm()" method="post">
-            <input type="text" name="fname">
-            <input type="submit" value="Submit">
-        </form>
-        <a href="hillman-library.html" class="myButton">Next Level</a>
-    </div>
-</div>
-{% endblock %}
+        <h1 id="scrambledVal">{{ scrambled_val }}</h1> <!-- Words are scrambled and displayed here... -->
+        <p id="unscrambledVal" hidden>{{ unscrambled_val }}</p>
 
+        <script type="text/javascript">
+            function validateForm() {
+                console.log("IN VALIDATE");
+                var guess = document.getElementByName("guess").value;
+                var html_word = document.getElementById("unscrambledVal");
+
+                //var guess = html_guess.textContent;
+                var word = html_word.textContent;
+
+                console.log(guess);
+
+
+                if (guess.toLowerCase() == word.toLowerCase()) {
+                    alert("Good Job!");
+                    return true;
+                }
+                else {
+                    alert("WRONG! Try again.");
+                    event.preventDefault();
+                    return false;
+                }
+                alert("HELLO!")
+                return true;  
+            }
+        </script>
+
+        <form name="guessForm" action="hillman-library.html">
+            <input type="text" name="guess">
+            <input type="submit" valid="Submit" onclick=validateForm()>
+        </form>
+    </div>
+{% endblock %}

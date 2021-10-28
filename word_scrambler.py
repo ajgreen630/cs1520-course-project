@@ -29,7 +29,7 @@ class WordScrambler():
         return word_entity
 
     def store_words(self, word_list):
-        """ Stores a list of words as entities in datastore. """
+        """ Stores a list of words as entities in datastore. """        
         client = self.get_client()
         for word in word_list:
             query = client.query(kind='Word')
@@ -43,9 +43,20 @@ class WordScrambler():
 
     def get_random_word(self):
         """ Fetches a random word from the datastore. """
+        logging.error('in get random word')
         client = self.get_client()
-
         query = client.query(kind='Word')
-        random_word = random.choice(list(query.fetch()))
+        results = list(query.fetch())
+        if len(results) == 0:
+            logging.error('results list is empty')
+        else:
+            logging.error('results list it NOT empty')
+        random_word = random.choice(results)
 
-        return random_word['text'].decode('UTF-8')
+        logging.error(random_word['text'])
+
+        if (isinstance(random_word['text'], bytes)):
+            return random_word['text'].decode('UTF-8')
+        else:
+            return random_word['text']
+        #return random_word['text'].decode('UTF-8')

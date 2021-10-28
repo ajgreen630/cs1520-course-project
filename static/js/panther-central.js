@@ -1,7 +1,4 @@
 function validateForm(word, guess) {
-    console.log("In validateForm()!");
-    console.log(word);
-    console.log(guess);
     if (guess.toLowerCase() == word.toLowerCase()) {
         alert("Good Job!");
         return true;

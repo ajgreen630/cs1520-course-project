@@ -3,7 +3,7 @@
 <script type="text/javascript" src="/static/js/panther-central.js"></script>
 <div class="main">
     <div class="heading">
-        <a>Welcome to Panther Central</a>
+        Welcome to Panther Central
     </div>
     <div class="audio">
         <audio src="../static/audio/PC.m4a" controls AutoPlay loop>
@@ -15,16 +15,16 @@
                 autostart="true">
             </audio>
     </div>
-    <div class="game">
-        <p><span id="countdownminutes">0 </span> minutes and <span id="countdownseconds">0 </span> seconds have passed.</p>
+     <div class="timer">
+        <p><span id="countdownminutes">0 </span> minutes and <span id="countdownseconds">1 </span> seconds have passed.</p>
 
         <script type="text/javascript">
-            var timeleft = 0;
+            var timeleft = 1;
             var downloadTimer = setInterval(function(){
             timeleft++;
             document.getElementById("countdownminutes").textContent = parseInt(timeleft/60);
             document.getElementById("countdownseconds").textContent = timeleft % 60;
-            if(timeleft >= 120)
+            if(timeleft > 120)
             {
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
@@ -32,6 +32,8 @@
             }
             },1000);
         </script>
+    </div>
+    <div class="game">
         <br><h2>I am the virtual assistant, in order to help you, please solve this anagram.</h2><br>
         <h4>Your word is...</h4>
         <h1 id="scrambledWord">{{ scrambled_word }}</h1> <!-- Words are scrambled and displayed here... -->

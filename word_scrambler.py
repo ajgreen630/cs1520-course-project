@@ -31,11 +31,23 @@ class WordScrambler():
     def store_words(self, word_list):
         """ Stores a list of words as entities in datastore. """        
         client = self.get_client()
+
+        query = client.query(kind='Word')
+        query.add_filter('text', '=', word)
+        logging.error('Here are the words in the datastore:')
+        datastore_str = '['
+        for entity in list(query.fetch()):
+            datastore_str += entity['text'] + ','
+        datastore_str += ']'
+        logging.error(datastore_str)
+
         for word in word_list:
             query = client.query(kind='Word')
             query.add_filter('text', '=', word)
             if len(list(query.fetch())) == 0:
                 client.put(self.word_to_entity(word))
+            else:
+                logging.error(word + ' is already in the datastore.')
 
     def get_solution(self, word, guess):
         """ Checks if a users guess to the value of a scrambled word is correct. """

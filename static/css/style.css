@@ -27,6 +27,11 @@
     box-shadow:0px 0px 50px 30px #8d0b68;
 
 }
+
+.heading h1{
+    background-color: #d175b7;
+    color: white;
+}
 /* -------------------------Panther central-------------------------- */
 .audio{
     width: 300px;

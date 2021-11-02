@@ -57,10 +57,15 @@
     opacity: 0.9;
     color: wheat;
     border-radius: 3cm;
+    font-size: 30;
 }
 .timer span{
      background-color: #1c2c54;
      color: #ff95e1;
+    font-size: 30;
+}
+.timer p{
+    font-size: 20;
 }
 .anagram{
     opacity: 0.8;

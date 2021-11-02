@@ -20,7 +20,6 @@
 }
 .heading{
     /* position:absolute; */
-   
     text-align: center;
     background-color: #d175b7;
     width: 99%;
@@ -47,10 +46,11 @@
     opacity: 0.9;
     /* padding-left: 45px; */
     color: white;
+    /* padding-top: 30px; */
 }
 .timer{
     width:800px;
-    height: 300px;
+    /* height: 300px; */
     margin: auto;
     text-align: center;
     opacity: 0.9;
@@ -72,7 +72,13 @@ div h4{
 	text-align: center;
 	color: rgb(255, 255, 255);
     background-color: #1c2c54;
+}.scrambledWord{
+    font-size: 30px; 
+	text-align: center;
+	color: rgb(255, 255, 255);
+    background-color: #1c2c54;
 }
+
 .game h2{
     text-align: center;
     color:#5ee6d6;

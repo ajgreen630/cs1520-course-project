@@ -211,12 +211,20 @@ body {
     justify-content: center;
 }
 #story {
-   display: flex;
+   /* display: flex;
    justify-content: center;
    text-align: center;
-   flex-direction: column;
-   font-size: 35;
+   flex-direction: column; */
+   font-size: 30;
    color: #FFFF00;
+   width: 80%;
+    height: 800px;
+    margin: auto;
+    background-color: #1c2c54;
+    opacity: 0.9;
+}
+#story p{
+    font-size: 40;
 }
 
 button {

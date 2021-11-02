@@ -53,6 +53,10 @@
     color: wheat;
     border-radius: 3cm;
 }
+.timer span{
+     background-color: #1c2c54;
+     color: #ff95e1;
+}
 .anagram{
     opacity: 0.8;
 }

@@ -3,6 +3,7 @@ import word_scrambler
 import populate_words
 import logging
 from google.cloud import datastore
+import os
 
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)

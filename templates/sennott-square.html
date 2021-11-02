@@ -1,0 +1,65 @@
+{% extends '_base.html' %}
+{% block content %}
+    <!-- Page content -->
+    <div class="main">
+        <div class="heading">
+            Welcome to Sennott Square
+        </div>
+ <!-- This part should be in each page -->
+ <!-- here you can add your code -->
+    <div>
+        <div class="timer">
+        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
+
+        <script type="text/javascript">
+            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            var minutes = parseInt(timeleft/60);
+            var seconds = timeleft % 60;
+            if (minutes < 10) 
+            {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) 
+            {
+                seconds = "0" + seconds;
+            }
+            document.getElementById("countdownminutes").textContent = minutes;
+            document.getElementById("countdownseconds").textContent = seconds;
+            var downloadTimer = setInterval(function(){
+            if(localStorage.getItem("keepRunning") == "true") { timeleft++; }
+            localStorage.setItem("timerLeft", String(timeleft));
+            var minutes = parseInt(timeleft/60);
+            var seconds = timeleft % 60;
+            if (minutes < 10) 
+            {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) 
+            {
+                seconds = "0" + seconds;
+            }
+            document.getElementById("countdownminutes").textContent = minutes;
+            document.getElementById("countdownseconds").textContent = seconds;
+            if(timeleft > 600)
+            {
+                clearInterval(downloadTimer);
+                alert("You have run out of time!");
+                window.location = "./home.html"; 
+            }
+            },1000);
+        </script>
+    </div>
+        <section id = "story"><center>
+        <h1>Congrats on Escaping Hillman</h1>
+        <h3>Enter the Square Maze of Sennott</h3>
+        </center>
+        </section>
+    <center><img src="../static/images/SennottSquareBuilding.jpeg" alt="Front Entrance" width="400" height="300"></center>
+        <section id="game"> <p>
+            Welcome to your final destination:  Sennott Square. This confusing labyrinth is sent to hold the Computer Science department in one of its floors, though legend has it that this building is also home to some of the most dangerous majors known to man. No one floor looks the same, and no two classrooms follow an order. You need to hurry! Class starts soon! Navigate your way through the maze of Sennott Square....if you dare?
+        </p><br>
+        
+        <center><button onclick="document.location='congratulations.html'">Get Started!</button>
+        </center>
+        </section>
+{% endblock %}

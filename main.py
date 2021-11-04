@@ -45,6 +45,10 @@ def hillman2():
 def hillman3():
     return flask.render_template('hillman3.html', page_title='Hillman Library')
 
+@app.route('/sennott-square.html')
+def sennott_square():
+    return flask.render_template('sennott-square.html', page_title='Sennott Square')
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
 

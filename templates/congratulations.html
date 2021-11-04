@@ -11,8 +11,8 @@
 
         <script type="text/javascript">
             var timeleft = parseInt(localStorage.getItem("timerLeft"));
-            document.getElementById("countdownminutes").textContent = parseInt(timeleft/60);
-            document.getElementById("countdownseconds").textContent = timeleft % 60;
+            document.getElementById("countdownminutes").textContent = parseInt((120-timeleft)/60);
+            document.getElementById("countdownseconds").textContent = (120-timeleft) % 60;
             localStorage.setItem("keepRunning", "false");
         </script>
     </div>

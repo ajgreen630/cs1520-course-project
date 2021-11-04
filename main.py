@@ -51,7 +51,7 @@ def sennott_square():
 
 @app.route('/congratulations.html')
 def congratulations():
-    return flask.render_template('congratulations', page_title='Congratulations!')
+    return flask.render_template('congratulations.html', page_title='Congratulations!')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

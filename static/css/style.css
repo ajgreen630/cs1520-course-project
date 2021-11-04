@@ -233,10 +233,8 @@ body {
 }
 
 #picture {
-  display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 35px solid #2a388b;
 }
 button {
     background-color: #f2c746;

@@ -33,7 +33,6 @@ class WordScrambler():
         client = self.get_client()
 
         query = client.query(kind='Word')
-        query.add_filter('text', '=', word)
         logging.error('Here are the words in the datastore:')
         datastore_str = '['
         for entity in list(query.fetch()):

@@ -15,8 +15,14 @@ ws = word_scrambler.WordScrambler()
 
 app = flask.Flask(__name__)
 
-# Redirect to home.html upon first entry:
+# Redirect to title_page.html upon first entry:
 @app.route('/')
+@app.route('/title')
+@app.route('/title.html')
+def title():
+    return flask.redirect('/static/html/title.html', code=302)
+
+# Redirect to home.html upon first entry:
 @app.route('/home.html')
 @app.route('/home')
 def root():

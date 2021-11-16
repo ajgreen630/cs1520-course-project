@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        html {
+            background: url(../images/lobby_background.png) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: 100% 100%;
+        }
+        body {
+            font-size: 25px;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            font-weight: 800;
+        }
+        .roc {
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: left;
+            flex-direction: column;
+        }
+        .roc > img {
+            margin-top: auto;
+            position: static;
+            height: 75vh;
+        }
+        .speech-bubble {
+            display: flex;
+            background: #fff;
+            color: black;
+            margin-left: 70%;
+            margin-right: 0%;
+            margin-top: 20%;
+            padding: 0.5em 1em;
+            position: relative;
+            border-radius: 0 0.25em 0.25em 0.25em;
+            transition: 1s;
+            animation: speech 0.7s linear 1;
+            text-align: center;
+        }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            border: 0.5em solid transparent;
+            border-top-color: #fff;
+            border-right-color: #fff;
+            right: 100%;
+            top: 0%;
+            transform: skewY(-30deg);
+            transform-origin: 100% 100%;
+        }
+        @keyframes speech {
+            0% {top: -20px;}
+            25% {top: 5px; box-shadow: 7px 40px 40px #664400;}
+            50% {top: 20px;}
+            75% {top: -20px; box-shadow: 7px -10px 50px #664400;}
+            100% {top: 0px;}
+        }
+    </style>
+    <body>
+        <div class="roc">
+            <img src="../images/roc_no_background.png">
+        </div>
+        <div class="speech-bubble" id="welcome-text">
+            <br>
+            Hello!  <br>
+            Welcome to the <br>
+            University of <br> 
+            Pittsburgh!
+            <br><br>
+        </div>
+        <div class="speech-bubble" id="my-name-is-roc">
+            My name is Roc.
+        </div>
+    </body>
+    
+</html>

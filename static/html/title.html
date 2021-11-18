@@ -1,21 +1,84 @@
 <!DOCTYPE html>
 <html>
-    <style>
-        body { 
-            background: url(../images/cathedral_title_page.png) no-repeat center center fixed; 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: 100% 100%;
-        }
-        img {
-            opacity: 0;
-        }
-    </style>
-    <map name="doormap">
-        <area shape="rect" coords="930, 980, 980, 1080", href="/home.html">
-    </map>
+    <head>
+        <style>
+            html, body {
+                display: flex;
+            }
+            .container {
+                position: absolute;
+                top: 0; bottom: 0; right: 0; left: 0;
+            }
+            .inner {
+                position: absolute;
+            }
+            #background {
+                top: 0; bottom: 0; left: 0; right: 0; 
+            }
+            #background_image {
+                width: 100%;
+                height: 100%;
+            }
+            #logo {
+                top: 0px; bottom: 0px; left: 40px; right: 0px; 
+                animation: fade_in 2s; 
+            }
+            #cathedral {
+                bottom: 0px;
+            }
+            #cathedral_image {
+                display: block;
+            }
+            #door {
+                bottom: 0px;
+                left: 835px;
+            }
+            #door_gif {
+                display: block;
+            }
+            #door_gif_link {
+                opacity: 0;
+            }
+            #sign {
+                bottom: 0px;
+                left: 975px;
+            }
+            #sign_image {
+                display: block;
+            }
+            #bats {
+                top: 50px;
+                left: 1050px;
+            }
+            @keyframes fade_in {
+                0% {opacity: 0;}
+                100% {opacity: 1;}
+            }
+        </style>
+    </head>
     <body>
-        <img src="../images/cathedral_title_page.png" alt="Cathedral Title Page" usemap="#doormap">
+        <div class="container">
+            <div class="inner" id="background">
+                <img id="background_image" src="../images/title_background.png" alt="Title Background">
+            </div>
+            <div class="inner" id="logo">
+                <img id="logo_image" src="../images/logo_glow.png" width="450" height="300">
+            </div>
+            <div class="inner" id="bats">
+                <img id="bats" src="../gifs/bats.gif">
+            </div>
+            <div class="inner" id="door">
+                <img id="door_gif" src="../gifs/door_animation.gif" height=125 href="introduction.html">
+            </div>
+            <div class="inner" id="cathedral">
+                <img id="cathedral_image" src="../images/cathedral.png" height="1000">
+            </div>
+            <div class="inner" id="door">
+                <a href="introduction.html"><img id="door_gif_link" src="../gifs/door_animation.gif" height=125 href="introduction.html"></a>
+            </div>
+            <div class="inner" id="sign">
+                <img id="sign_image" src="../images/sign.png">
+            </div>
+        </div>
     </body>
 </html>

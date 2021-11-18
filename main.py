@@ -22,6 +22,10 @@ app = flask.Flask(__name__)
 def title():
     return flask.redirect('/static/html/title.html', code=302)
 
+@app.route('/intro')
+@app.route('/introduction')
+@app.route('/introduction.html')
+
 # Redirect to home.html upon first entry:
 @app.route('/home.html')
 @app.route('/home')

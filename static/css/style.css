@@ -162,23 +162,24 @@ input{
         padding-top: 30px;
     }
 
+    
     .pic{
-        display: none;
-    }
-    .picAnimate{
-        width: 3%;
+        width: 5%;
         position: relative;
         animation-name: map;
         animation-duration: 3s;  
         animation-fill-mode: both;
         z-index: 100;
+        display: block;
     }
 
     @keyframes map {
-        from{width: 3%;}
-        to{width: 30%;}
-        from {top: 300px; left: 0px;}
-        to {top: 0px; left: 300px;}
+        from{width: 5%;}
+        to{width: 45%;}
+        from {top: 300px; left: 0%;}
+        to {top: 0px; left: 25%;}
+        from{opacity: 0;}
+        to{opacity: 8;}
     }
 
     .hillman1 {

@@ -20,11 +20,14 @@ app = flask.Flask(__name__)
 @app.route('/title')
 @app.route('/title.html')
 def title():
-    return flask.redirect('/static/html/title.html', code=302)
+    return flask.render_template('title.html', code=302)
 
 @app.route('/intro')
 @app.route('/introduction')
+@app.route('/intro.html')
 @app.route('/introduction.html')
+def introduction():
+    return flask.render_template('introduction.html', page_title='Room of Doubt')
 
 # Redirect to home.html upon first entry:
 @app.route('/home.html')

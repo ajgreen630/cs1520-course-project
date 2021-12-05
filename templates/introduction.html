@@ -1,0 +1,46 @@
+{% extends '_base-2.html' %}
+{% block content %}
+<link rel="stylesheet" href="static/css/intro_style.css">
+<div class="page">
+    <div class="lobby">
+        <img src="static/images/lobby_background.png">
+    </div>
+    <div class="mascot">
+        <img src="static/images/roc_no_background.png" width="1650" height="750">
+    </div>
+    <div class="bubble_and_button">
+        <div class="bubble">
+            <p id="intro-message">Hello!<br>Welcome to the University of Pittsburgh!</p>
+        </div>
+        <div class="button_container">
+            <button class="button" id="readyButton">Let's go!</button>
+        </div>
+    </div>
+    <script>
+        var message = ["My name is Roc.<br>I'm the mascot for the Pittsburgh Panthers.",
+                       "Today is your first day as a student!<br>Let's prepare you for your classes.", 
+                       "You'll need to visit a few buildings throughout the campus and collect some important items before you can get to class.",
+                       "It might be a little bit challenging, but it's worth the effort!<br>Are you ready?"];
+        var count = 0;
+        var opacity = 0;
+        var my_p = document.getElementById("intro-message");
+        var my_button = document.getElementById("readyButton");
+        my_button.style.visibility = 'hidden';
+        
+        function changeMessage() {
+            if(count < message.length) {
+                my_p.innerHTML = message[count];
+                count++;
+                if (count == 4) {
+                    my_button.style.visibility = 'visible';
+                }
+            }
+            else {
+                clearInterval(intervalVar);
+            }
+            
+        }
+        intervalVar = setInterval(changeMessage, 6000);
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>Room of Doubt</title>
+        <link rel="icon" type="image/x-icon" href="static/icons/key-icon.ico">
+        <style>
+        /* Design for all elements: */
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            overflow: hidden;
+        }
+        /* Sidebar design: */
+        .wrapper {
+            top: 0; bottom: 0; right: 0; left: 0;
+            padding: 0;
+        }
+        .wrapper .sidebar {
+            display: inline-block;
+            background: #000C41;
+            position: fixed;
+            top: 0; left: 0;
+            width: 250px;
+            height: 100%;
+            padding: 0;
+            transition: all 0.5s ease;
+        }
+        .wrapper .sidebar .logo {
+            background: #FFFF;
+            padding: 25px;
+            align-self: center;
+            border-bottom: 1px solid #000C41;
+            border-right: 1px solid #000C41
+        }
+        .wrapper .siderbar ul {
+            background: #e9c855;
+            display: flex;
+            justify-content: center;
+        }
+        .wrapper .sidebar ul li a {
+            display: block;
+            padding: 25px 7%;
+            background: #e9c855;
+            border-bottom: 1px solid #000C41;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            font-weight: 550;
+            position: relative;
+        }
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+        .wrapper .sidebar ul li a:hover {
+            color: #000C41;
+
+            background:#e9c855;
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .wrapper .sidebar ul li a:hover .icon,
+        .wrapper .sidebar ul li a.active .icon{
+            color: #0c7db1;
+        }
+        .wrapper .sidebar ul li a:hover:before,
+        .wrapper .sidebar ul li a.active:before{
+            display: block;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            {# Page content: #}
+            {% block content %}{% endblock %}
+            {# Page sidebar: #}
+            <div class="sidebar">
+                <!-- Logo: -->
+                <div class="logo">
+                    <img src="static/images/sidebar_logo.png" width="200" height="80">
+                </div>
+                <!-- Menu items: -->
+                <ul>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-cathedral"></i></span>
+                            <span class="item">Cathedral of Learning</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-pc"></i></span>
+                            <span class="item">Panther Central</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-hillman"></i></span>
+                            <span class="item">Hillman Library</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-sennott"></i></span>
+                            <span class="item">Sennott Square</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-hof"></i></span>
+                            <span class="item">Hall of Fame</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="active">
+                            <span class="icon"><i class="fas fa-giveup"></i></span>
+                            <span class="item">Give Up</span>
+                        </a>
+                    </li>
+                </ul>  
+            </div>
+        </div>
+    </body>
+</html>

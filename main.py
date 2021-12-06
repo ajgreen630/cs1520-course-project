@@ -68,15 +68,15 @@ def hillman3():
     return flask.render_template('hillman3.html', page_title='Hillman Library')
 
 @app.route('/map1.html')
-def hillman1():
+def map1():
     return flask.render_template('map1.html', page_title='Hillman Library')
 
 @app.route('/map2.html')
-def hillman2():
+def map2():
     return flask.render_template('map2.html', page_title='Hillman Library')
 
 @app.route('/map3.html')
-def hillman3():
+def map3():
     return flask.render_template('map3.html', page_title='Hillman Library')
 
 

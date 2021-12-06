@@ -20,7 +20,7 @@ app = flask.Flask(__name__)
 @app.route('/title')
 @app.route('/title.html')
 def title():
-    return flask.redirect('/static/html/title.html', code=302)
+    return flask.render_template('title.html')
 
 @app.route('/intro')
 @app.route('/introduction')

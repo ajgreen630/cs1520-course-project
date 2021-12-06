@@ -66,17 +66,17 @@ function validation()
 //Using Datastore will change the whole function and syntax associated with it
 function createAccountValidation()
 {
-	var username = document.querySelector("#cauname");										//Username variable
-	var password = document.querySelector("#capwd");										//User created Password
-	var email = document.querySelector("#email");											//User entered Email
-	var lowerCaseLetters = /[a-z]/g;														//LowerCase Check Variable
-	var upperCaseLetters = /[A-Z]/g;														//UpperCase Check Variable
-	var numbers = /[0-9]/g;																	//Number Check Variable
-	var confirmPassword = document.querySelector("#cacpwd");								//Confirm Password Variable
-	const display_error_message = document.querySelector("#caerror_msg");					//Main error message
+	var username = document.querySelector("#cauname");						//Username variable
+	var password = document.querySelector("#capwd");						//User created Password
+	var email = document.querySelector("#email");							//User entered Email
+	var lowerCaseLetters = /[a-z]/g;								//LowerCase Check Variable
+	var upperCaseLetters = /[A-Z]/g;								//UpperCase Check Variable
+	var numbers = /[0-9]/g;										//Number Check Variable
+	var confirmPassword = document.querySelector("#cacpwd");					//Confirm Password Variable
+	const display_error_message = document.querySelector("#caerror_msg");				//Main error message
 	const username_error_message1 = document.querySelector("#cauname_error_msg1");			//Username error message 1
 	const username_error_message2 = document.querySelector("#cauname_error_msg2");			//Username error message 2
-	const email_error_message = document.querySelector("#caemail_error_msg");				//Email error message
+	const email_error_message = document.querySelector("#caemail_error_msg");			//Email error message
 	const password_error_message1 = document.querySelector("#capwd_error_msg1");			//Password error message 1
 	const password_error_message2 = document.querySelector("#capwd_error_msg2");			//Password error message 2
 	const password_error_message3 = document.querySelector("#capwd_error_msg3");			//Password error message 3
@@ -96,7 +96,7 @@ function createAccountValidation()
 	if(!(validUsername.test(username.value)) || (!(validPassword.test(password.value))) || !(validEmail.test(email.value)) || (document.getElementById("cacpwd").value != document.getElementById("capwd").value))
 	{
 		/*-----------------------------------------------------------------------------------------------------------------------------|
-															USERNAME VALIDATION 													   |
+									USERNAME VALIDATION 													   |
 		  -----------------------------------------------------------------------------------------------------------------------------|
 		*/
 		//For an invalid username
@@ -123,7 +123,7 @@ function createAccountValidation()
 		}
 
 		/*-----------------------------------------------------------------------------------------------------------------------------|
-															EMAIL VALIDATION 													       |
+									EMAIL VALIDATION 													       |
 		  -----------------------------------------------------------------------------------------------------------------------------|
 		*/
 
@@ -139,7 +139,7 @@ function createAccountValidation()
 		}
 
 		/*-----------------------------------------------------------------------------------------------------------------------------|
-		  													PASSWORD VALIDATION 													   |
+		  							PASSWORD VALIDATION 													   |
 		  -----------------------------------------------------------------------------------------------------------------------------|
 		*/
 		//For an invalid password
@@ -195,7 +195,7 @@ function createAccountValidation()
 		}
 		
 		/*-----------------------------------------------------------------------------------------------------------------------------|
-															CONFIRM PASSWORD 														   |
+									CONFIRM PASSWORD 														   |
 		  -----------------------------------------------------------------------------------------------------------------------------|
 		*/
 		if(document.getElementById("cacpwd").value != document.getElementById("capwd").value || document.getElementById("cacpwd").value.length < 8)

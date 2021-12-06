@@ -8,7 +8,7 @@ import os
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)
 # 2. gcloud app deploy [us-east1]
-# 3. dev_appserver.py app.yaml
+# 3. dev_appserverpy app.yaml
 
 # TODO: Add code for populating datastore if running on local (dev_appserver).
 ws = word_scrambler.WordScrambler()
@@ -20,14 +20,19 @@ app = flask.Flask(__name__)
 @app.route('/title')
 @app.route('/title.html')
 def title():
-    return flask.render_template('title.html', code=302)
+    return flask.redirect('/static/html/title.html', code=302)
 
 @app.route('/intro')
 @app.route('/introduction')
-@app.route('/intro.html')
 @app.route('/introduction.html')
-def introduction():
-    return flask.render_template('introduction.html', page_title='Room of Doubt')
+def intro():
+    return flask.render_template('introduction.html')
+
+@app.route('/login')
+@app.route('/loginPage')
+@app.route('/loginPage.html')
+def login():
+    return flask.render_template('loginPage.html')
 
 # Redirect to home.html upon first entry:
 @app.route('/home.html')
@@ -49,6 +54,10 @@ def get_word_scramble():
 @app.route('/hillman-library.html')
 def hillman_library():
     return flask.render_template('hillman-library.html', page_title='Hillman Library')
+
+@app.route('/hillman1.html')
+def hillman1():
+    return flask.render_template('hillman1.html', page_title='Hillman Library')
 
 @app.route('/hillman2.html')
 def hillman2():

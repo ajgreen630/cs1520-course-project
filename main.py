@@ -67,6 +67,19 @@ def hillman2():
 def hillman3():
     return flask.render_template('hillman3.html', page_title='Hillman Library')
 
+@app.route('/map1.html')
+def hillman1():
+    return flask.render_template('map1.html', page_title='Hillman Library')
+
+@app.route('/map2.html')
+def hillman2():
+    return flask.render_template('map2.html', page_title='Hillman Library')
+
+@app.route('/map3.html')
+def hillman3():
+    return flask.render_template('map3.html', page_title='Hillman Library')
+
+
 @app.route('/sennott-square.html')
 def sennott_square():
     return flask.render_template('sennott-square.html', page_title='Sennott Square')

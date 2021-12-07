@@ -1,0 +1,271 @@
+{% extends '_base.html' %}
+{% block content %}
+    <!-- Page content -->
+    <div class="main">
+        <div class="heading">
+            Sennott Square Maze
+        </div>
+ <!-- This part should be in each page -->
+ <!-- here you can add your code -->
+    <div>
+        <div class="timer">
+        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
+
+        <script type="text/javascript">
+            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            var minutes = parseInt(timeleft/60);
+            var seconds = timeleft % 60;
+            if (minutes < 10) 
+            {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) 
+            {
+                seconds = "0" + seconds;
+            }
+            document.getElementById("countdownminutes").textContent = minutes;
+            document.getElementById("countdownseconds").textContent = seconds;
+            var downloadTimer = setInterval(function(){
+            if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
+
+            if()
+            localStorage.setItem("timerLeft", String(timeleft));
+            var minutes = parseInt(timeleft/60);
+            var seconds = timeleft % 60;
+            if (minutes < 10) 
+            {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) 
+            {
+                seconds = "0" + seconds;
+            }
+            document.getElementById("countdownminutes").textContent = minutes;
+            document.getElementById("countdownseconds").textContent = seconds;
+            if(timeleft <= 0)
+            {
+                clearInterval(downloadTimer);
+                alert("You have run out of time!");
+                window.location = "./home.html"; 
+            }
+            },1000);
+        </script>
+    </div>
+        <section id = "story"><center>
+        <h1>Find Room 5502</h1>
+        </center>
+        </section>
+        <section id = "story"><center>
+                <img id = "picture" src="../static/images/SennottPics/01E.jpg" alt="Maze" style="width:70%;"></center>             
+                <center>
+                <button onclick="changeLeft()">Left</button>
+                <button onclick="goStraight()">Straight</button>
+                <button onclick="changeRight()">Right</button>
+                </center>
+                <script type="text/javascript">
+                    function changeRight() {
+                        var image = document.getElementById('picture');
+                        if (image.src.charAt(image.src.length-5) == 'N') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'E' + image.src.substr(image.src.length-4);
+                        }
+                        else if (image.src.charAt(image.src.length-5) == 'E') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'S' + image.src.substr(image.src.length-4);
+                        }
+                        else if (image.src.charAt(image.src.length-5) == 'S') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'W' + image.src.substr(image.src.length-4);
+                        }
+                        else if (image.src.charAt(image.src.length-5) == 'W') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'N' + image.src.substr(image.src.length-4);
+                        }
+                    }
+                    function changeLeft() {
+                        var image = document.getElementById('picture');
+                        if (image.src.charAt(image.src.length-5) == 'N') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'W' + image.src.substr(image.src.length-4);
+                        }
+                        else if (image.src.charAt(image.src.length-5) == 'W') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'S' + image.src.substr(image.src.length-4);
+                        }
+                        else if (image.src.charAt(image.src.length-5) == 'S') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'E' + image.src.substr(image.src.length-4);
+                        }
+                        else if (image.src.charAt(image.src.length-5) == 'E') {
+                            image.src = image.src.substr(0, image.src.length-5) + 'N' + image.src.substr(image.src.length-4);
+                        }
+                    }
+                    function goStraight() {
+                        var image = document.getElementById('picture');
+                        if (image.src.includes("01N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '02' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("01S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '03' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("02S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '01' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("02W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '04' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("02E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '15' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("03N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '01' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("03W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '12' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("03E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '13' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("04N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '05' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("04E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '02' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("04S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '12' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("05N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '21' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("05W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '22' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("05S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '04' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("06E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '19' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("06W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '20' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("06S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '21' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("07E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '20' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("07S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '08' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("08E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '09' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("08N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '07' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("09W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '08' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("09S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '10' + image.src.substr(image.src.length-5);
+                        }
+
+
+                        else if (image.src.includes("10E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '22' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("10N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '09' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("10S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '11' + image.src.substr(image.src.length-5);
+                        }
+
+
+                        else if (image.src.includes("11N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '10' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("11E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '23' + image.src.substr(image.src.length-5);
+                        }
+
+
+                        else if (image.src.includes("12E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '03' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("12N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '04' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("12W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '23' + image.src.substr(image.src.length-5);
+                        }   
+                        else if (image.src.includes("13W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '03' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("15E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '16' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("15W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '02' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("16W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '15' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("16N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '18' + image.src.substr(image.src.length-5);
+                        }
+
+                        else if (image.src.includes("17W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '19' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("17S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '18' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("18N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '17' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("18S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '16' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("19E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '17' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("19W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '06' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("20E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '06' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("20W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '07' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("21N")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '06' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("21S")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '05' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("22E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '05' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("22W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '10' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("22S")) {
+                            window.location = "./congratulations.html"; 
+                        }
+
+
+                        else if (image.src.includes("23E")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '12' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("23W")) {
+                            image.src = image.src.substr(0, image.src.length-7) + '11' + image.src.substr(image.src.length-5);
+                        }
+                        else if (image.src.includes("23N")) {
+                            window.location = "./congratulations.html"; 
+                        }
+
+                        else
+                        {
+                            alert("This is not a valid path. Try again");
+                        }
+                    }
+                </script>
+                </section>
+{% endblock %}

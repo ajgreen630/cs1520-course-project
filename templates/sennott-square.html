@@ -27,6 +27,8 @@
             document.getElementById("countdownseconds").textContent = seconds;
             var downloadTimer = setInterval(function(){
             if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
+
+            if()
             localStorage.setItem("timerLeft", String(timeleft));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
@@ -53,13 +55,13 @@
         <h1>Congrats on Escaping Hillman</h1>
         <h3>Enter the Square Maze of Sennott</h3>
         </center>
-        <center><img id = "picture" src="../static/images/SennottSquareBuilding.jpeg" alt="Front Entrance" style="width:70%;"></center> 
+        <center><img id = "picture" src="../static/images/SennottPics/00-Enter.jpg" alt="Front Entrance" style="width:70%;"></center> 
         </section>
         <section id="game"> <p>
             Welcome to your final destination:  Sennott Square. This confusing labyrinth is sent to hold the Computer Science department in one of its floors, though legend has it that this building is also home to some of the most dangerous majors known to man. No one floor looks the same, and no two classrooms follow an order. You need to hurry! Class starts soon! Navigate your way through the maze of Sennott Square....if you dare?
         </p><br>
         
-        <center><button onclick="document.location='congratulations.html'">Get Started!</button>
+        <center><button onclick="document.location='maze.html'; localStorage.setItem('hillmanOne', 'true')">Get Started!</button>
         </center>
         </section>
 {% endblock %}

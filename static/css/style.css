@@ -5,14 +5,15 @@
 
 /* Style page content */
 .main {
-   margin-left: 10px;
+   margin-left: 22%;
    padding: 0px 10px;
    background-color: #0b0e07;
    margin-top: 10px;
+   /* padding: 10%; */
 }
 .heading a {
   font-size: 70px;
-  background-color: #d175b7;
+  background-color: #e9c855;;
   color: white;
   z-index: 1;
   top: 0; 
@@ -21,10 +22,10 @@
 .heading{
     /* position:absolute; */
     text-align: center;
-    background-color: #d175b7;
+    background-color: #e9c855;
     width: 99%;
     border-radius: 8px;
-    box-shadow:0px 0px 50px 30px #8d0b68;
+    box-shadow:0px 0px 50px 30px #b49b41;
 
 }
 
@@ -32,7 +33,22 @@
     background-color: #d175b7;
     color: white;
 }
-/* -------------------------Panther central-------------------------- */
+/* -------------------------Timer-------------------------- */
+
+#countdownminutes{
+    color: black;
+}
+
+#countdownseconds{
+    color: black;
+}
+.time p{
+    margin-top: 8%;
+    background-color: white;
+    width: 16%;
+    color: black;
+    margin-left: 40%;
+}
 .audio{
     width: 300px;
     margin: auto;
@@ -55,18 +71,19 @@
     margin: auto;
     text-align: center;
     opacity: 0.9;
-    color: wheat;
+    color: #e9c855;
     border-radius: 3cm;
     font-size: 30;
 }
 .timer span{
-     background-color: #1c2c54;
-     color: #ff95e1;
+     background-color: white;
+     color: #e9c855;
     font-size: 30;
 }
 .timer p{
     font-size: 20;
 }
+/* -------------------------Panther central-------------------------- */
 .anagram{
     opacity: 0.8;
 }
@@ -139,29 +156,26 @@ input{
     .headhillman{
 		width: 80%;
         text-align: center;
-        margin-left: 130px;
+        margin-left: 10%;
         color: white;
         background-color: transparent;
 	}
     .headhillman h4{
-        color: #378b82;
-        background-color: #5ee6d6;
-        width: 78%;
+        color: white;
+        background-color: #1c2c54;
+        width: 60%;
         border-radius: 8px;
         margin: auto;
+        font-size:large;
+        margin-top: 2%;        
     }
-    .headhillman h2{
-        background-color: transparent;
-    }
+    
     .map{
         align-content: center;
         padding-bottom: 40px;
-        background-color: #1e009f;
-        width:80%;
         margin: auto;
         padding-top: 30px;
     }
-
     
     .pic{
         width: 5%;
@@ -183,6 +197,7 @@ input{
     }
 
     .hillman1 {
+        width: 60%;
         display: block;
         margin-left: auto;
         margin-right: auto;

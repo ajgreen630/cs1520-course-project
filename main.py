@@ -51,6 +51,8 @@ def get_word_scramble():
                                   scrambled_word = scrambled_word,
                                   unscrambled_word = word)
 
+
+
 @app.route('/hillman-library.html')
 def hillman_library():
     return flask.render_template('hillman-library.html', page_title='Hillman Library')

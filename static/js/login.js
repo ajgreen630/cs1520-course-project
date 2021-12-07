@@ -216,6 +216,30 @@ function createAccountValidation()
 	}
 	else
 	{
+		var registration = {
+		};
+		registration.username = username.value;
+		registration.email = email.value;
+		registration.password = password.value;
+
+		var options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(registration),
+		};
+
 		display_error_message.classList.add("no__display");
+		fetch('https://cs1520-course-project.ue.r.appspot.com/register', options)
+		.then((response)=>{
+			console.log(response.status);
+		})
+		.catch(()=>{
+			console.log("Error registering!");
+			return false;
+		});
+		//console.log("Registration valid.  Sending true.");
+		//return true;
 	}
 }

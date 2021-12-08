@@ -138,6 +138,11 @@ def map3():
 def sennott_square():
     return flask.render_template('sennott-square.html', page_title='Sennott Square')
 
+@app.route('/maze')
+@app.route('/maze.html')
+def maze():
+    return flask.render_template('maze.html', page_title='Maze')
+
 #TODO: Add Hall of Fame page (leaderboard)
 @app.route('/hof')
 @app.route('/halloffame')

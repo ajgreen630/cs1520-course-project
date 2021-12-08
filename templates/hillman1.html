@@ -12,7 +12,8 @@
         <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
 
         <script type="text/javascript">
-            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            var timetaken = parseInt(localStorage.getItem("stopwatch")); 
+            var timeleft = parseInt(localStorage.getItem("hillmantimer"));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -26,8 +27,9 @@
             document.getElementById("countdownminutes").textContent = minutes;
             document.getElementById("countdownseconds").textContent = seconds;
             var downloadTimer = setInterval(function(){
-            if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
-            localStorage.setItem("timerLeft", String(timeleft));
+            if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++; }
+            localStorage.setItem("stopwatch", String(timetaken));
+            localStorage.setItem("hillmantimer", String(timeleft));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -42,9 +44,10 @@
             document.getElementById("countdownseconds").textContent = seconds;
             if(timeleft <= 0)
             {
+                localStorage.setItem('hillmantimer', '120');                
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
-                window.location = "./home.html"; 
+                window.location = "/hillman-library.html"; 
             }
             },1000);
         </script>
@@ -57,7 +60,7 @@
   <div class="map">
       <img src="../static/images/HillmanPics/1.JPG" usemap="#image-map" class="hillman1">
       <map name="image-map">
-          <area target="" alt="" title="" href="/map1.html" onclick="document.location=templates/map1.html" coords="240,180,250,200" shape="rect">
+          <area target="" alt="" title="" href="/map1.html" onclick="document.location=templates/map1.html" coords="315,235,340,270" shape="rect">
       </map>
   </div>
 </div>

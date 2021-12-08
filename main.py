@@ -38,6 +38,16 @@ def intro():
 def login():
     return flask.render_template('loginPage.html')
 
+@app.route('/validateLogin')
+def validateLogin():
+    data = flask.request.get_json()
+    if(ub.validate_login(data["userID"], data["password"])):
+        res = flask.make_response(flask.jsonify({"message": "User login successful."}), 200)
+        return res
+    else:
+        res = flask.make_response(flask.jsonify({"message": "Credentials do not match!"}), 507)
+        return res
+
 @app.route('/register', methods=['POST']) 
 def register():
     logging.error("In register!")
@@ -50,15 +60,18 @@ def register():
 
     # Check if username exists:
     if(ub.check_if_username_exists(data["username"])):
-        return flask.Response("Username already exists!", status=507, mimetype='application/json')
+        res = flask.make_response(flask.jsonify({"message": "Username already exists!"}), 507)
+        return res
     # Check if email exists:
     if(ub.check_if_email_exists(data["email"])):
-        return flask.Response("Email already exists!", status=507, mimetype='application/json')
+        res = flask.make_response(flask.jsonify({"message": "Email already exists!"}), 507)
+        return res
 
     ub.store_user(data["username"], data["email"], data["password"])
 
+    res = flask.make_response(flask.jsonify({"message": "Successfully registered user."}), 200)
     # After inserting into DB, redirect to /login:
-    return flask.render_template('loginPage.html')
+    return res
 
 # Redirect to panther-central.html:
 @app.route('/panther-central')
@@ -72,12 +85,7 @@ def get_word_scramble():
                                   scrambled_word = scrambled_word,
                                   unscrambled_word = word)
 
-<<<<<<< HEAD
-
-
-=======
 @app.route('/hillman-library')
->>>>>>> d4044dad226008767428a4195f4d87d35347c3e5
 @app.route('/hillman-library.html')
 def hillman_library():
     return flask.render_template('hillman-library.html', page_title='Hillman Library')

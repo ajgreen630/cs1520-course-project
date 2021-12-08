@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
+function loginValidation() {
+	var userID = document.querySelector("#uname");
+	var password = document.querySelector("#pwd");
+}
+
 //Using Datastore will change the whole function and syntax associated with it
 function validation()
 {
@@ -66,6 +71,7 @@ function validation()
 //Using Datastore will change the whole function and syntax associated with it
 function createAccountValidation()
 {
+	event.preventDefault();
 	var username = document.querySelector("#cauname");						//Username variable
 	var password = document.querySelector("#capwd");						//User created Password
 	var email = document.querySelector("#email");							//User entered Email
@@ -230,20 +236,24 @@ function createAccountValidation()
 			body: JSON.stringify(registration),
 		};
 
-		console.log(options);
+		//console.log(options);
 
 		display_error_message.classList.add("no__display");
-		fetch('https://cs1520-course-project.ue.r.appspot.com/register', options)
-		.then((response)=>{
+		fetch('https://room-of-doubt-1520.uk.r.appspot.com/register', options)
+		.then(function(response) {
 			if (response.ok) {
-				return response.text();
+				console.log('Successfully registered user.');
+				console.log(response);
+				window.location.replace("https://room-of-doubt-1520.uk.r.appspot.com/login");
+				return response;
+			} else {
+				throw new Error('Something went wrong...');
 			}
-			throw new Error('Something went wrong...');
 		})
-		.then((text)=>{
-			console.log('Request successful ', text);
+		.then(function(response) {
+			console.log('Request successful ', response);
 		})
-		.catch((error)=>{
+		.catch(function(error) {
 			console.log('Request failed ', error);
 		});
 		//console.log("Registration valid.  Sending true.");

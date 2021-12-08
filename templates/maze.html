@@ -28,7 +28,6 @@
             var downloadTimer = setInterval(function(){
             if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
 
-            if()
             localStorage.setItem("timerLeft", String(timeleft));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;

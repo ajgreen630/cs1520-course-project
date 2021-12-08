@@ -1,4 +1,3 @@
-{% extends '_base.html' %}
 {% extends '_base-2.html' %}
 {% block content %}
 <head>
@@ -56,7 +55,7 @@
             {
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
-                window.location = "./home.html"; 
+                window.location = "/introduction"; 
             }
             },1000);
         </script>
@@ -67,7 +66,7 @@
         <h1 id="scrambledWord">{{ scrambled_word }}</h1> <!-- Words are scrambled and displayed here... -->
         <p id="unscrambledWord" hidden>{{ unscrambled_word }}</p>
 
-        <form name="guessForm" id="guess_frm" action="hillman-library.html">
+        <form name="guessForm" id="guess_frm" action="/hillman-library">
             <input type="text" name="guess" id="guess_input" /><br>
             <input type="submit" valid="Submit" onclick="validateForm(document.getElementById('unscrambledWord').textContent, document.getElementById('guess_input').value); localStorage.setItem('pantherCentralStatus', 'cleared')"/>
         </form>

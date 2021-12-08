@@ -16,8 +16,6 @@ import user_base
 ws = word_scrambler.WordScrambler()
 ub = user_base.UserBase()
 username = ""
-email = ""
-password = ""
 
 app = flask.Flask(__name__)
 
@@ -43,6 +41,7 @@ def validateLogin():
     data = flask.request.get_json()
     if(ub.validate_login(data["userID"], data["password"])):
         res = flask.make_response(flask.jsonify({"message": "User login successful."}), 200)
+        username = data["userID"]
         return res
     else:
         res = flask.make_response(flask.jsonify({"message": "Credentials do not match!"}), 507)

@@ -15,11 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-function loginValidation() {
-	var userID = document.querySelector("#uname");
-	var password = document.querySelector("#pwd");
-}
-
 //Using Datastore will change the whole function and syntax associated with it
 function validation()
 {
@@ -34,7 +29,7 @@ function validation()
 
 	//Conditions
 	//For if either of the input fields dont meet the required conditions
-	if(username.value.length < 5 || password.value.length < 5)
+	/*if(username.value.length < 5 || password.value.length < 5)
 	{
 		//If both input fields are wrong, then display error for both
 		if(username.value.length < 5 && password.value.length < 5)
@@ -63,9 +58,40 @@ function validation()
 		return false;
 	}
 	else
-	{
-		display_error_message.classList.add("no__display");
-	}
+	{*/
+	var login = {
+	};
+	login.username = username.value;
+	login.email = email.value;
+	login.password = password.value;
+	
+	var options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(login),
+	};
+	
+	fetch('https://room-of-doubt-1520.uk.r.appspot.com/validateLogin', options)
+	.then(function(response) {
+		if (response.ok) {
+			console.log('Successfully logged user in.');
+			console.log(response);
+			window.location.replace("https://room-of-doubt-1520.uk.r.appspot.com/panther-central");
+			return response;
+		} else {
+			throw new Error('Something went wrong...');
+		}
+	})
+	.then(function(response) {
+		console.log('Request successful ', response);
+	})
+	.catch(function(error) {
+		console.log('Request failed ', error);
+	});
+
+	display_error_message.classList.add("no__display");
 }
 
 //Using Datastore will change the whole function and syntax associated with it

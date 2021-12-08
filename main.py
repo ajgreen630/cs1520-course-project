@@ -143,7 +143,7 @@ def sennott_square():
 @app.route('/halloffame')
 @app.route('/halloffame.html')
 def hall_of_fame():
-    return flask.render_template('halloffame.html')
+    return flask.render_template('leaderBoardPage.html')
 
 @app.route('/congratulations.html')
 def congratulations():

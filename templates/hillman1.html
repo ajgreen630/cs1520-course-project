@@ -1,4 +1,4 @@
-{% extends '_base.html' %}
+{% extends '_base-2.html' %}
 {% block content %}
 <head>
     <link rel="stylesheet" href="static/css/style.css"> 
@@ -9,7 +9,7 @@
             <a>Welcome to Hillman Library</a>
     </div>
 	<div class="timer">
-        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
+        <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
 
         <script type="text/javascript">
             var timeleft = parseInt(localStorage.getItem("timerLeft"));
@@ -50,15 +50,14 @@
         </script>
     </div>
 	<div class="headhillman">
-       <h2>I Spy...</h2>
-        <h4>Spooky Skeleton</h4>
+        <h4> I spy a Spooky Skeleton</h4>
         <br>	
     </div>
    
   <div class="map">
-      <img src="static/images/HillmanPics/1.JPG" usemap="#image-map" class="hillman1">
+      <img src="../static/images/HillmanPics/1.JPG" usemap="#image-map" class="hillman1">
       <map name="image-map">
-          <area target="" alt="" title="" href="/map1.html" onclick="document.location=templates/map1.html" coords="408,308,432,341" shape="rect">
+          <area target="" alt="" title="" href="/map1.html" onclick="document.location=templates/map1.html" coords="240,180,250,200" shape="rect">
       </map>
   </div>
 </div>

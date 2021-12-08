@@ -20,10 +20,12 @@
             </audio>
     </div>
     <div class="timer">
-        <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
+        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
 
         <script type="text/javascript">
-            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            var timetaken = parseInt(localStorage.getItem("stopwatch"));
+            localStorage.setItem('panthertimer', '120'); 
+            var timeleft = parseInt(localStorage.getItem("panthertimer"));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -37,8 +39,9 @@
             document.getElementById("countdownminutes").textContent = minutes;
             document.getElementById("countdownseconds").textContent = seconds;
             var downloadTimer = setInterval(function(){
-            if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
-            localStorage.setItem("timerLeft", String(timeleft));
+            if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++; }
+            localStorage.setItem("stopwatch", String(timetaken));
+            localStorage.setItem("panthertimer", String(timeleft));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -53,9 +56,10 @@
             document.getElementById("countdownseconds").textContent = seconds;
             if(timeleft <= 0)
             {
+                localStorage.setItem('panthertimer', '120');                
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
-                window.location = "/introduction"; 
+                window.location = "/panther-central.html"; 
             }
             },1000);
         </script>
@@ -66,7 +70,7 @@
         <h1 id="scrambledWord">{{ scrambled_word }}</h1> <!-- Words are scrambled and displayed here... -->
         <p id="unscrambledWord" hidden>{{ unscrambled_word }}</p>
 
-        <form name="guessForm" id="guess_frm" action="/hillman-library">
+        <form name="guessForm" id="guess_frm" action="hillman-library.html">
             <input type="text" name="guess" id="guess_input" /><br>
             <input type="submit" valid="Submit" onclick="validateForm(document.getElementById('unscrambledWord').textContent, document.getElementById('guess_input').value); localStorage.setItem('pantherCentralStatus', 'cleared')"/>
         </form>

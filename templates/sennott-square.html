@@ -1,16 +1,17 @@
-{% extends '_base.html' %}
+{% extends '_base-2.html' %}
 {% block content %}
     <!-- Page content -->
+    <head>
+        <link rel="stylesheet" href="static/css/style.css"> 
+        <script type="text/javascript" src="static/js/panther-central.js"></script>
+    </head>
     <div class="main">
         <div class="heading">
-            Welcome to Sennott Square
+                <a>Welcome to Sennott Square</a>
         </div>
- <!-- This part should be in each page -->
- <!-- here you can add your code -->
-    <div>
         <div class="timer">
-        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
-
+            <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
+    
         <script type="text/javascript">
             var timeleft = parseInt(localStorage.getItem("timerLeft"));
             var minutes = parseInt(timeleft/60);
@@ -53,7 +54,6 @@
     </div>
         <section id = "story">
             <center>
-                <h1>Congrats on Escaping Hillman</h1>
                 <h3>Enter the Square Maze of Sennott</h3>
             </center>
             <center><img id = "picture" src="../static/images/SennottPics/00-Enter.jpg" alt="Front Entrance" style="width:70%;"></center> 

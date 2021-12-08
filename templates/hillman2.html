@@ -1,4 +1,4 @@
-{% extends '_base.html' %}
+{% extends '_base-2.html' %}
 {% block content %}
 <head>
     <link rel="stylesheet" href="../static/css/style.css"> 
@@ -6,10 +6,10 @@
 </head>
 <div class="main">
     <div class="heading">
-            <a>Welcome to the Hillman Library</a>
+            <a>Welcome to Hillman Library</a>
     </div>
 	<div class="timer">
-        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
+        <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
 
         <script type="text/javascript">
             var timeleft = parseInt(localStorage.getItem("timerLeft"));
@@ -50,8 +50,7 @@
         </script>
     </div>
 	<div class="headhillman">
-        <h2>I Spy...</h2>
-        <h4>Yellow Book</h4>
+        <h4> I spy a Yellow Book</h4>
         <br>
 	</div>
   <div class="map">

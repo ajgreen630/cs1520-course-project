@@ -25,7 +25,7 @@
     background-color: #e9c855;
     width: 99%;
     border-radius: 8px;
-    box-shadow:0px 0px 50px 30px #b49b41;
+    box-shadow:0px 0px 38px 30px #b49b41;
 
 }
 
@@ -91,8 +91,8 @@
 div p{
 	font-size: 50px;
 	text-align: center;
-	color: #ff95e1;
-    background-color: #1c2c54;
+	color: #e9c855;
+    
 }
 div h4{
 	font-size: 30px; 
@@ -107,10 +107,13 @@ div h4{
 	color: rgb(255, 255, 255);
     background-color: #1c2c54;
 }
+.game{
+    margin-top: 1%;
+}
 
 .game h2{
     text-align: center;
-    color:#5ee6d6;
+    color:#e9c855;
     background-color: #1c2c54;
 }
 form{

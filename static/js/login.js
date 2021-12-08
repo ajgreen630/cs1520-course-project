@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //Using Datastore will change the whole function and syntax associated with it
 function validation()
 {
+	event.preventDefault();
 	//Username variable
 	var username = document.querySelector("#uname");
 	//Password variable
@@ -62,7 +63,6 @@ function validation()
 	var login = {
 	};
 	login.username = username.value;
-	login.email = email.value;
 	login.password = password.value;
 	
 	var options = {
@@ -73,14 +73,15 @@ function validation()
 		body: JSON.stringify(login),
 	};
 	
-	fetch('https://room-of-doubt-1520.uk.r.appspot.com/validateLogin', options)
+	fetch('/validateLogin', options)
 	.then(function(response) {
 		if (response.ok) {
 			console.log('Successfully logged user in.');
 			console.log(response);
-			window.location.replace("https://room-of-doubt-1520.uk.r.appspot.com/panther-central");
+			window.location.replace("/panther-central");
 			return response;
 		} else {
+			console.log(response);
 			throw new Error('Something went wrong...');
 		}
 	})
@@ -265,12 +266,12 @@ function createAccountValidation()
 		//console.log(options);
 
 		display_error_message.classList.add("no__display");
-		fetch('https://room-of-doubt-1520.uk.r.appspot.com/register', options)
+		fetch('/register', options)
 		.then(function(response) {
 			if (response.ok) {
 				console.log('Successfully registered user.');
 				console.log(response);
-				window.location.replace("https://room-of-doubt-1520.uk.r.appspot.com/login");
+				window.location.replace("/login");
 				return response;
 			} else {
 				throw new Error('Something went wrong...');

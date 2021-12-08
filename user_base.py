@@ -43,6 +43,12 @@ class UserBase():
         user = client.get(key)
         return user["time"]
 
+    def get_user_name(self, email):
+        client = self.get_client()
+        key = client.key('User', email)
+        user = client.get(key)
+        return user["username"]
+
     def check_if_username_exists(self, username):
         client = self.get_client()
         query = client.query(kind='User')

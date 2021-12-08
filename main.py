@@ -13,6 +13,7 @@ import user_base
 # 3. dev_appserverpy app.yaml
 
 # TODO: Add code for populating datastore if running on local (dev_appserver).
+populate_words.main()
 ws = word_scrambler.WordScrambler()
 ub = user_base.UserBase()
 username = ""
@@ -36,14 +37,27 @@ def intro():
 def login():
     return flask.render_template('loginPage.html')
 
-@app.route('/validateLogin')
+@app.route('/validateLogin', methods=['POST'])
 def validateLogin():
     data = flask.request.get_json()
-    if(ub.validate_login(data["userID"], data["password"])):
+    logging.error(type(data))
+    logging.error(data)
+    logging.error(data["username"])
+    logging.error(data["password"])
+    
+    if(ub.validate_login(data["username"], data["password"])):
+        logging.error('User found!')
         res = flask.make_response(flask.jsonify({"message": "User login successful."}), 200)
-        username = data["userID"]
+        if(not ub.check_if_username_exists(data["username"])):  # Assumes username input is email, then stores the user's username.
+            logging.error('User ID is email, searching for username...')
+            username = ub.get_user_name()
+            logging.error('Found username, ' + username + '.')
+        else:   # Assumes username input is username, then stores the user's username.
+            logging.error('User ID is username.')
+            username = data["username"]
         return res
     else:
+        logging.error('Could not find, ' + data["username"] + ', in datastore.')
         res = flask.make_response(flask.jsonify({"message": "Credentials do not match!"}), 507)
         return res
 

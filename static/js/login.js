@@ -230,14 +230,21 @@ function createAccountValidation()
 			body: JSON.stringify(registration),
 		};
 
+		console.log(options);
+
 		display_error_message.classList.add("no__display");
 		fetch('https://cs1520-course-project.ue.r.appspot.com/register', options)
 		.then((response)=>{
-			console.log(response.status);
+			if (response.ok) {
+				return response.text();
+			}
+			throw new Error('Something went wrong...');
 		})
-		.catch(()=>{
-			console.log("Error registering!");
-			return false;
+		.then((text)=>{
+			console.log('Request successful ', text);
+		})
+		.catch((error)=>{
+			console.log('Request failed ', error);
 		});
 		//console.log("Registration valid.  Sending true.");
 		//return true;

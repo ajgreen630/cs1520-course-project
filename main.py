@@ -5,6 +5,7 @@ import logging
 from google.cloud import datastore
 import os
 import json
+import user_base
 
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)
@@ -13,6 +14,7 @@ import json
 
 # TODO: Add code for populating datastore if running on local (dev_appserver).
 ws = word_scrambler.WordScrambler()
+ub = user_base.UserBase()
 username = ""
 email = ""
 password = ""
@@ -45,6 +47,15 @@ def register():
     logging.error(data["username"])
     logging.error(data["email"])
     logging.error(data["password"])
+
+    # Check if username exists:
+    if(ub.check_if_username_exists(data["username"])):
+        return flask.Response("Username already exists!", status=507, mimetype='application/json')
+    # Check if email exists:
+    if(ub.check_if_email_exists(data["email"])):
+        return flask.Response("Email already exists!", status=507, mimetype='application/json')
+
+    ub.store_user(data["username"], data["email"], data["password"])
 
     # After inserting into DB, redirect to /login:
     return flask.render_template('loginPage.html')

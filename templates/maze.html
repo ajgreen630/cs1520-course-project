@@ -253,7 +253,9 @@
                             image.src = image.src.substr(0, image.src.length-7) + '10' + image.src.substr(image.src.length-5);
                         }
                         else if (image.src.includes("22S")) {
+                            console.log("Finished!")
                             var finishTime = localStorage.getItem('stopwatch');
+                            console.log(finishTime.value);
 
                             var finishData = {
                             };
@@ -299,7 +301,11 @@
                             image.src = image.src.substr(0, image.src.length-7) + '11' + image.src.substr(image.src.length-5);
                         }
                         else if (image.src.includes("23N")) {
+                            console.log("Finished!")
                             var finishTime = localStorage.getItem('stopwatch');
+                            console.log(typeof(finishTime));
+                            console.log(finishTime);
+                            console.log(finishTime.value);
 
                             var finishData = {
                             };

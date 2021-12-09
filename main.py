@@ -159,7 +159,7 @@ def store_finish_time():
     logging.error(data)
     logging.error(data["time"])
 
-    finish_time = data["time"]
+    finish_time = 4
 
     best_time = ub.update_time(username, finish_time)
 

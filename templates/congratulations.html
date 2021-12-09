@@ -1,0 +1,34 @@
+{% extends '_base.html' %}
+{% block content %}
+    <!-- Page content -->
+    <div class="main">
+        <div class="heading">
+            The End
+        </div>
+ <!-- This part should be in each page -->
+ <div class="timer">
+        <p>You have finished in <span id="countdownminutes">-</span> minutes and <span id="countdownseconds">-</span> seconds.</p>
+
+        <script type="text/javascript">
+            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            document.getElementById("countdownminutes").textContent = parseInt((120-timeleft)/60);
+            document.getElementById("countdownseconds").textContent = (120-timeleft) % 60;
+            localStorage.setItem("keepRunning", "false");
+        </script>
+    </div>
+ <!-- here you can add your code -->
+        <div>
+                <section id = "story"><center>
+                <h1>Well Done! You've Solved it!</h1>
+                <h3>Welcome to CS 1520!</h3>
+                <img id = "picture" src="../static/images/SennottSquareClass.jpeg" alt="Classroom" style="width:70%;"></center>
+                </section>
+                <section id="story"> <p>
+                    Thank you for playing our game. You have won! You have survived our Room of Doubt, so now you can enjoy your time in the <b> RIVETING</b> CS 1520 class! Hope you enjoy learning from a 30.....never mind, 28 year old genius! (totally not trying to score extra points)
+                </p><br>
+                
+                <center><button onclick="location.href='https://pittcs.wiki/courses/CS1520'" type="button">Here is your prize!</button>
+                <button onclick="document.location='home.html'">Back Home</button>
+                </center>
+                </section>
+    {% endblock %}

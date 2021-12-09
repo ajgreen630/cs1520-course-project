@@ -1,4 +1,4 @@
-{% extends '_base-2.html' %}
+{% extends '_base.html' %}
 {% block content %}
 <head>
     <link rel="stylesheet" href="../static/css/style.css"> 
@@ -12,8 +12,7 @@
         <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
 
         <script type="text/javascript">
-            var timetaken = parseInt(localStorage.getItem("stopwatch")); 
-            var timeleft = parseInt(localStorage.getItem("hillmantimer"));
+            var timeleft = parseInt(localStorage.getItem("timerLeft"));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -27,9 +26,8 @@
             document.getElementById("countdownminutes").textContent = minutes;
             document.getElementById("countdownseconds").textContent = seconds;
             var downloadTimer = setInterval(function(){
-            if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++; }
-            localStorage.setItem("stopwatch", String(timetaken));
-            localStorage.setItem("hillmantimer", String(timeleft));
+            if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
+            localStorage.setItem("timerLeft", String(timeleft));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -44,10 +42,9 @@
             document.getElementById("countdownseconds").textContent = seconds;
             if(timeleft <= 0)
             {
-                localStorage.setItem('hillmantimer', '120');                
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
-                window.location = "/hillman-library.html"; 
+                window.location = "./home.html"; 
             }
             },1000);
         </script>
@@ -64,7 +61,7 @@
     <div class="map">
         <img src="../static/images/HillmanPics/3.JPG" usemap="#image-map" class="hillman1">
         <map name="image-map">
-               <area target="" alt="" title="" href="/map3.html" onclick="document.location=templates/map3.html" coords="128,313,140,334" shape="rect">
+               <area target="" alt="" title="" href="/map3.html" onclick="document.location=templates/map3.html" coords="177,421,168,405" shape="rect">
         </map>
     </div>
 </div>

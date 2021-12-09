@@ -176,7 +176,10 @@ def hall_of_fame():
                 break
 
     logging.error(time_list)
+    logging.error("Finish time: " + finish_time)
+    logging.error("Best time: " + best_time)
 
+    time.sleep(1)
     return flask.render_template('leaderBoardPage.html', 
                                   page_title = 'Panther Central',
                                   finish_time = finish_time,
@@ -192,8 +195,6 @@ def hall_of_fame():
                                   fifth_spot_name = name_list[4],
                                   fifth_spot = time_list[4])
 
-    return flask.render_template('leaderBoardPage.html')
-
 @app.route('/storeFinishTime', methods=['POST'])
 def store_finish_time():
     logging.error("In store_finish_time()")
@@ -202,12 +203,15 @@ def store_finish_time():
     logging.error(data)
     logging.error(data["time"])
 
-    finish_time = data["time"]
+    finish_time = str(data["time"])
+    logging.error("Finish time in store_finish_time: " + finish_time)
 
-    best_time = ub.update_time(username, finish_time)
+    best_time = str(ub.update_time(username, finish_time))
+
+    logging.error("Best time in store_finish_time: " + best_time)
 
     res = flask.make_response(flask.jsonify({"message": "Successfully stored user's best time."}), 200)
-
+    time.sleep(2)
     return res
     
 @app.route('/congratulations.html')

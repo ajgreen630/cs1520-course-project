@@ -99,22 +99,34 @@
                         </a>
                     </li>
                     <li>
-                        <a id="PCButton" href = "" class="active" onclick="if(localStorage.getItem('pantherCentralStatus').equals('cleared')){window.location.href = '/panther-central';}">
+                        <a id = "PCButton" href = "#" class="active">
                             <span class="icon"><i class="fas fa-pc"></i></span>
                             <span class="item">Panther Central</span>
                         </a>
+                        <script text = "javascript">
+                            if(localStorage.getItem('pantherCentralStatus') == 'cleared')
+                            {
+                                document.getElementById("PCButton").href="panther-central.html"; 
+                            }
+                        </script>
                     </li>
                     <li>
-                        <a href = "" class="active" onclick="if(localStorage.getItem('hillmanStatus').equals('cleared')){window.location.href = '/hillman-library';}">
+                        <a id = "HillmanButton" href = "#" class="active">
                             <span class="icon"><i class="fas fa-hillman"></i></span>
                             <span class="item">Hillman Library</span>
                         </a>
+                        <script text = "javascript">
+                            if(localStorage.getItem('hillmanStatus') == 'cleared'){document.getElementById("HillmanButton").href="hillman-library.html";}
+                        </script>
                     </li>
                     <li>
-                        <a href = "" class="active" onclick="if(localStorage.getItem('sennottStatus').equals('cleared')){window.location.href = '/hillman-library';}">
+                        <a id = "SennottButton" href = "#" class="active">
                             <span class="icon"><i class="fas fa-sennott"></i></span>
                             <span class="item">Sennott Square</span>
                         </a>
+                        <script text = "javascript">
+                            if(localStorage.getItem('sennottStatus') == 'cleared'){document.getElementById("SennottButton").href="sennott-square.html";}
+                        </script>
                     </li>
                     <li>
                         <a href="/hof" class="active">

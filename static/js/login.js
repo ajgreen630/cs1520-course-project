@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //Using Datastore will change the whole function and syntax associated with it
 function validation()
 {
+    
 	event.preventDefault();
 	//Username variable
 	var username = document.querySelector("#uname");
@@ -76,14 +77,14 @@ function validation()
 	fetch('/validateLogin', options)
 	.then(function(response) {
 		if (response.ok) {
-			console.log('Successfully logged user in.');
-			console.log(response);
             localStorage.setItem('stopwatch', '0'); 
             localStorage.setItem('pantherTimer', '120'); 
             localStorage.setItem('keepRunning', 'true');
             localStorage.setItem('pantherCentralStatus', 'false');
             localStorage.setItem('hillmanStatus', 'false');
             localStorage.setItem('sennottStatus', 'false');
+			console.log('Successfully logged user in.');
+			console.log(response);
 			window.location.replace("/panther-central");
 			return response;
 		} else {

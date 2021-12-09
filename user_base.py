@@ -33,12 +33,21 @@ class UserBase():
     def update_time(self, username, time):
         finish_time = time
         best_time = ""
+        logging.error("in update_time")
+        logging.error(username)
+        logging.error(time)
 
         client = self.get_client()
-        key = client.key('User', username)
-        user = client.get(key)
+        query = client.query(kind='User')
+        query.add_filter('username', '=', username)
+        #logging.error('Username, ' + username + ', exists in the datastore.')
+        
+        user = list(query.fetch())[0]
+        logging.error("Queried for user.  Username: " + user["username"])
+        logging.error("Time: " + user["time"])
+        logging.error("Is time an empty string? " + str(user["time"] == ""))
 
-        if (time < user["time"] or user["time"] == ""):
+        if(finish_time < user["time"] or user["time"] == ""):
             logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
             logging.error("It will replace " + username + "'s most recent time.")
             user["time"] = time
@@ -49,6 +58,12 @@ class UserBase():
             logging.error("It will not replace " + username + "'s most recent time.")
             best_time = user["time"]
         return best_time
+
+    def get_time_descending(self):
+        client = self.get_client()
+        query = client.query(kind='User')
+        query.order = ["-time"]
+        return list(query.fetch())
             
 
     def get_user_time(self, username):

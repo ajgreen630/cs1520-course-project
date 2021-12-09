@@ -31,7 +31,7 @@ class UserBase():
         client.put(self.user_to_entity(username, email, password))
 
     def update_time(self, username, time):
-        finish_time = time
+        finish_time = str(time)
         best_time = ""
         logging.error("in update_time")
         logging.error(username)
@@ -47,20 +47,20 @@ class UserBase():
         logging.error("Is time an empty string? " + str(user["time"] == ""))
 
         if(user["time"] == ""):
-            logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
+            logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["time"] +".")
             logging.error("It will replace " + username + "'s most recent time.")
-            user["time"] = time
+            user["time"] = finish_time
             client.put(user)
             best_time = finish_time
         else:
-            if(finish_time < int(user["time"]) or :
-                logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
+            if(int(finish_time) < int(user["time"])):
+                logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["time"] +".")
                 logging.error("It will replace " + username + "'s most recent time.")
-                user["time"] = time
+                user["time"] = _finish_time
                 client.put(user)
                 best_time = finish_time
             else:
-                logging.error("Most recent time, " + time + ", does not beat last time, " + user["time"] +".")
+                logging.error("Most recent time, " + finish_time + ", does not beat last time, " + user["time"] +".")
                 logging.error("It will not replace " + username + "'s most recent time.")
                 best_time = user["time"]
         return best_time

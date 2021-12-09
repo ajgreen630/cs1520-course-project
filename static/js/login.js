@@ -78,6 +78,12 @@ function validation()
 		if (response.ok) {
 			console.log('Successfully logged user in.');
 			console.log(response);
+            localStorage.setItem('stopwatch', '0'); 
+            localStorage.setItem('pantherTimer', '120'); 
+            localStorage.setItem('keepRunning', 'true');
+            localStorage.setItem('pantherCentralStatus', 'false');
+            localStorage.setItem('hillmanStatus', 'false');
+            localStorage.setItem('sennottStatus', 'false');
 			window.location.replace("/panther-central");
 			return response;
 		} else {

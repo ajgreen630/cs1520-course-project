@@ -1,4 +1,4 @@
-{% extends '_base.html' %}
+{% extends '_base-2.html' %}
 {% block content %}
     <!-- Page content -->
     <head>
@@ -13,7 +13,8 @@
             <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
     
         <script type="text/javascript">
-            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            var timeleft = parseInt(localStorage.getItem("sennottTimer"));
+            var timetaken = parseInt(localStorage.getItem("stopwatch"));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -27,10 +28,9 @@
             document.getElementById("countdownminutes").textContent = minutes;
             document.getElementById("countdownseconds").textContent = seconds;
             var downloadTimer = setInterval(function(){
-            if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
-
-            if()
-            localStorage.setItem("timerLeft", String(timeleft));
+            if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++;}
+            localStorage.setItem("sennottTimer", String(timeleft));
+            localStorage.setItem("stopwatch", String(timetaken));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -45,9 +45,10 @@
             document.getElementById("countdownseconds").textContent = seconds;
             if(timeleft <= 0)
             {
+                localStorage.setItem('sennottTimer', '120'); 
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
-                window.location = "./home.html"; 
+                window.location = "/sennott-square";
             }
             },1000);
         </script>
@@ -61,7 +62,7 @@
         <section id="game"> <p>
             Welcome to your final destination:  Sennott Square. This confusing labyrinth is sent to hold the Computer Science department in one of its floors, though legend has it that this building is also home to some of the most dangerous majors known to man. No one floor looks the same, and no two classrooms follow an order. You need to hurry! Class starts soon! Navigate your way through the maze of Sennott Square....if you dare?
             </p><br>
-        <center><button onclick="document.location='maze.html'; localStorage.setItem('hillmanOne', 'true')">Get Started!</button>
+        <center><button onclick="document.location='maze.html';">Get Started!</button>
         </center>
         </section>
 {% endblock %}

@@ -13,7 +13,8 @@
         
 
         <script type="text/javascript">
-            var timeleft = parseInt(localStorage.getItem("timerLeft"));
+            var timeleft = parseInt(localStorage.getItem("hillmanTimer"));
+            var timetaken = parseInt(localStorage.getItem("stopwatch"));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -27,8 +28,9 @@
             document.getElementById("countdownminutes").textContent = minutes;
             document.getElementById("countdownseconds").textContent = seconds;
             var downloadTimer = setInterval(function(){
-            if(localStorage.getItem("keepRunning") == "true") { timeleft--; }
-            localStorage.setItem("timerLeft", String(timeleft));
+            if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++;}
+            localStorage.setItem("hillmanTimer", String(timeleft));
+            localStorage.setItem("stopwatch", String(timetaken));
             var minutes = parseInt(timeleft/60);
             var seconds = timeleft % 60;
             if (minutes < 10) 
@@ -43,9 +45,10 @@
             document.getElementById("countdownseconds").textContent = seconds;
             if(timeleft <= 0)
             {
+                localStorage.setItem('hillmanTimer', '120'); 
                 clearInterval(downloadTimer);
                 alert("You have run out of time!");
-                window.location = "./home.html"; 
+                window.location = "/hillman-library"; 
             }
             },1000);
         </script>

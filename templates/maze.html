@@ -248,6 +248,40 @@
                             image.src = image.src.substr(0, image.src.length-7) + '10' + image.src.substr(image.src.length-5);
                         }
                         else if (image.src.includes("22S")) {
+                            var finishTime = localStorage.getItem('stopwatch');
+
+                            var finishData = {
+                            };
+                            finishData.time = finishTime.value;
+                            
+                            var options = {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(finishData),
+                            };
+                            
+                            fetch('/storeFinishTime', options)
+                            .then(function(response) {
+                                if (response.ok) {
+                                    console.log('Successfully stored user finish time.');
+                                    console.log(response);
+                                    window.location = "/halloffame"; 
+                                    localStorage.setItem('sennottStatus', 'cleared');
+                                    return response;
+                                } else {
+                                    console.log(response);
+                                    throw new Error('Something went wrong...');
+                                }
+                            })
+                            .then(function(response) {
+                                console.log('Request successful ', response);
+                            })
+                            .catch(function(error) {
+                                console.log('Request failed ', error);
+                            });
+
                             window.location = "/halloffame"; 
                             localStorage.setItem('sennottStatus', 'cleared');
                         }
@@ -260,10 +294,40 @@
                             image.src = image.src.substr(0, image.src.length-7) + '11' + image.src.substr(image.src.length-5);
                         }
                         else if (image.src.includes("23N")) {
-                            window.location = "/halloffame"; 
-                            localStorage.setItem('sennottStatus', 'cleared');
-                        }
+                            var finishTime = localStorage.getItem('stopwatch');
 
+                            var finishData = {
+                            };
+                            finishData.time = finishTime.value;
+                            
+                            var options = {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(finishData),
+                            };
+                            
+                            fetch('/storeFinishTime', options)
+                            .then(function(response) {
+                                if (response.ok) {
+                                    console.log('Successfully stored user finish time.');
+                                    console.log(response);
+                                    window.location = "/halloffame"; 
+                                    localStorage.setItem('sennottStatus', 'cleared');
+                                    return response;
+                                } else {
+                                    console.log(response);
+                                    throw new Error('Something went wrong...');
+                                }
+                            })
+                            .then(function(response) {
+                                console.log('Request successful ', response);
+                            })
+                            .catch(function(error) {
+                                console.log('Request failed ', error);
+                            });
+                        }
                         else
                         {
                             alert("This is not a valid path. Try again");

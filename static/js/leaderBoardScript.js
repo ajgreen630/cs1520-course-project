@@ -30,3 +30,10 @@ tabs.forEach(function(tab){
 	})
 })
 
+function storeTime() {
+
+}
+
+function getTop10Times() {
+	
+}

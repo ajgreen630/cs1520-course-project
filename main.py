@@ -19,6 +19,7 @@ ub = user_base.UserBase()
 username = "ajgreen630"
 finish_time = ""
 best_time = ""
+time_list = []
 
 app = flask.Flask(__name__)
 
@@ -160,8 +161,7 @@ def store_finish_time():
     logging.error(data)
     logging.error(data["time"])
 
-    #TODO: Remove hard coding
-    finish_time = "4"
+    finish_time = data["time"]
 
     best_time = ub.update_time(username, finish_time)
 

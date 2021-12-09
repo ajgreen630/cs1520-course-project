@@ -35,28 +35,34 @@ class UserBase():
         best_time = ""
         logging.error("in update_time")
         logging.error(username)
-        logging.error(time)
+        logging.error(finish_time)
 
         client = self.get_client()
         query = client.query(kind='User')
         query.add_filter('username', '=', username)
-        #logging.error('Username, ' + username + ', exists in the datastore.')
         
         user = list(query.fetch())[0]
         logging.error("Queried for user.  Username: " + user["username"])
-        logging.error("Time: " + user["time"])
+        logging.error("Most recent time: " + user["time"])
         logging.error("Is time an empty string? " + str(user["time"] == ""))
 
-        if(finish_time < user["time"] or user["time"] == ""):
+        if(user["time"] == ""):
             logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
             logging.error("It will replace " + username + "'s most recent time.")
             user["time"] = time
             client.put(user)
             best_time = finish_time
         else:
-            logging.error("Most recent time, " + time + ", does not beat last time, " + user["time"] +".")
-            logging.error("It will not replace " + username + "'s most recent time.")
-            best_time = user["time"]
+            if(finish_time < int(user["time"]) or :
+                logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
+                logging.error("It will replace " + username + "'s most recent time.")
+                user["time"] = time
+                client.put(user)
+                best_time = finish_time
+            else:
+                logging.error("Most recent time, " + time + ", does not beat last time, " + user["time"] +".")
+                logging.error("It will not replace " + username + "'s most recent time.")
+                best_time = user["time"]
         return best_time
 
     def get_time_descending(self):

@@ -6,6 +6,7 @@ from google.cloud import datastore
 import os
 import json
 import user_base
+import time
 
 # Execution:
 # 1. gcloud config set project [PROJECT_ID] (for each terminal)
@@ -20,6 +21,7 @@ username = "ajgreen630"
 finish_time = ""
 best_time = ""
 time_list = []
+name_list = []
 
 app = flask.Flask(__name__)
 
@@ -151,6 +153,45 @@ def maze():
 @app.route('/halloffame')
 @app.route('/halloffame.html')
 def hall_of_fame():
+    time.sleep(1)
+    db_time_list = ub.get_time_descending()
+
+    if len(db_time_list) < 5:
+        for item in db_time_list:
+            name_list.append(item["username"])
+            time_list.append(item["time"] + " seconds")
+        diff = 5 - len(db_time_list)
+        count = 0
+        while count < diff:
+            name_list.append("")
+            time_list.append("")
+            count = count + 1
+    else:
+        count = 0
+        for item in db_time_list:
+            name_list.append(item["username"])
+            time_list.append(item["time"] + " seconds")
+            count = count + 1
+            if (count == 5):
+                break
+
+    logging.error(time_list)
+
+    return flask.render_template('leaderBoardPage.html', 
+                                  page_title = 'Panther Central',
+                                  finish_time = finish_time,
+                                  best_time = best_time,
+                                  first_spot_name = name_list[0],
+                                  first_spot_time = time_list[0],
+                                  second_spot_name = name_list[1],
+                                  second_spot_time = time_list[1],
+                                  third_spot_name = name_list[2],
+                                  third_spot_time = time_list[2],
+                                  fourth_spot_name = name_list[3],
+                                  fourth_spot_time = time_list[3],
+                                  fifth_spot_name = name_list[4],
+                                  fifth_spot = time_list[4])
+
     return flask.render_template('leaderBoardPage.html')
 
 @app.route('/storeFinishTime', methods=['POST'])
@@ -168,12 +209,7 @@ def store_finish_time():
     res = flask.make_response(flask.jsonify({"message": "Successfully stored user's best time."}), 200)
 
     return res
-
-@app.route('/getTopFive')
-def get_top_five():
-    time_list = ub.get_time_descending()
     
-
 @app.route('/congratulations.html')
 def congratulations():
     return flask.render_template('congratulations.html', page_title='Congratulations!')

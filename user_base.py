@@ -46,17 +46,17 @@ class UserBase():
         logging.error("Most recent time: " + user["time"])
         logging.error("Is time an empty string? " + str(user["time"] == ""))
 
-        if(user["time"] == ""):
+        if user["time"] == "":
             logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["time"] +".")
             logging.error("It will replace " + username + "'s most recent time.")
             user["time"] = finish_time
             client.put(user)
             best_time = finish_time
         else:
-            if(int(finish_time) < int(user["time"])):
+            if int(finish_time) < int(user["time"]):
                 logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["time"] +".")
                 logging.error("It will replace " + username + "'s most recent time.")
-                user["time"] = _finish_time
+                user["time"] = finish_time
                 client.put(user)
                 best_time = finish_time
             else:
@@ -69,7 +69,13 @@ class UserBase():
         client = self.get_client()
         query = client.query(kind='User')
         query.order = ["-time"]
-        return list(query.fetch())
+
+        ret_list = []
+        for item in list(query.fetch()):
+            if item["time"] != "":
+                ret_list.append(item)
+
+        return ret_list
             
 
     def get_user_time(self, username):

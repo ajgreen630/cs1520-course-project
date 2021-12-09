@@ -89,6 +89,7 @@ function validation()
 			return response;
 		} else {
 			console.log(response);
+			display_error_message.classList.add("no__display");
 			throw new Error('Something went wrong...');
 		}
 	})

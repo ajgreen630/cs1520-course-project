@@ -74,7 +74,7 @@ class UserBase():
     def get_time_descending(self):
         client = self.get_client()
         query = client.query(kind='User')
-        query.order = ["-best_time"]
+        query.order = ["best_time"]
 
         ret_list = []
         for item in list(query.fetch()):

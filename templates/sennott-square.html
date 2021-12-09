@@ -12,57 +12,52 @@
         <div class="timer">
             <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
     
-        <script type="text/javascript">
-            var timeleft = parseInt(localStorage.getItem("sennottTimer"));
-            var timetaken = parseInt(localStorage.getItem("stopwatch"));
-            var minutes = parseInt(timeleft/60);
-            var seconds = timeleft % 60;
-            if (minutes < 10) 
-            {
-                minutes = "0" + minutes;
-            }
-            if (seconds < 10) 
-            {
-                seconds = "0" + seconds;
-            }
-            document.getElementById("countdownminutes").textContent = minutes;
-            document.getElementById("countdownseconds").textContent = seconds;
-            var downloadTimer = setInterval(function(){
-            if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++;}
-            localStorage.setItem("sennottTimer", String(timeleft));
-            localStorage.setItem("stopwatch", String(timetaken));
-            var minutes = parseInt(timeleft/60);
-            var seconds = timeleft % 60;
-            if (minutes < 10) 
-            {
-                minutes = "0" + minutes;
-            }
-            if (seconds < 10) 
-            {
-                seconds = "0" + seconds;
-            }
-            document.getElementById("countdownminutes").textContent = minutes;
-            document.getElementById("countdownseconds").textContent = seconds;
-            if(timeleft <= 0)
-            {
-                localStorage.setItem('sennottTimer', '120'); 
-                clearInterval(downloadTimer);
-                alert("You have run out of time!");
-                window.location = "/sennott-square";
-            }
-            },1000);
-        </script>
-    </div>
+            <script type="text/javascript">
+                 var timeleft = parseInt(localStorage.getItem("sennottTimer"));
+                var timetaken = parseInt(localStorage.getItem("stopwatch"));
+                var minutes = parseInt(timeleft/60);
+                var seconds = timeleft % 60;
+                if (minutes < 10) 
+                {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < 10) 
+                {
+                    seconds = "0" + seconds;
+                }
+                document.getElementById("countdownminutes").textContent = minutes;
+                document.getElementById("countdownseconds").textContent = seconds;
+                var downloadTimer = setInterval(function(){
+                if(localStorage.getItem("keepRunning") == "true") { timeleft--; timetaken++;}
+                localStorage.setItem("sennottTimer", String(timeleft));
+                localStorage.setItem("stopwatch", String(timetaken));
+                var minutes = parseInt(timeleft/60);
+                var seconds = timeleft % 60;
+                if (minutes < 10) 
+                {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < 10) 
+                {
+                    seconds = "0" + seconds;
+                }
+                document.getElementById("countdownminutes").textContent = minutes;
+                document.getElementById("countdownseconds").textContent = seconds;
+                if(timeleft <= 0)
+                {
+                    localStorage.setItem('sennottTimer', '120'); 
+                    clearInterval(downloadTimer);
+                    alert("You have run out of time!");
+                    window.location = "/sennott-square";
+                }
+                },1000);
+            </script>
+        </div>
         <section id = "story">
             <center>
                 <h3>Enter the Square Maze of Sennott</h3>
             </center>
             <center><img id = "picture" src="../static/images/SennottPics/00-Enter.jpg" alt="Front Entrance" style="width:70%;"></center> 
-        </section>
-        <section id="game"> <p>
-            Welcome to your final destination:  Sennott Square. This confusing labyrinth is sent to hold the Computer Science department in one of its floors, though legend has it that this building is also home to some of the most dangerous majors known to man. No one floor looks the same, and no two classrooms follow an order. You need to hurry! Class starts soon! Navigate your way through the maze of Sennott Square....if you dare?
-            </p><br>
-        <center><button onclick="document.location='maze.html';">Get Started!</button>
-        </center>
+            <center><button onclick="document.location='maze.html';">Get Started!</button>
         </section>
 {% endblock %}

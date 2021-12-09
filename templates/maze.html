@@ -338,6 +338,8 @@
                             .catch(function(error) {
                                 console.log('Request failed ', error);
                             });
+                            window.location = "/halloffame"; 
+                            localStorage.setItem('sennottStatus', 'cleared');
                         }
                         else
                         {

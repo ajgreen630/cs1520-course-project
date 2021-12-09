@@ -113,14 +113,14 @@ class UserBase():
             else:
                 query.add_filter('password', '=', password)
                 if len(list(query.fetch())) == 0:
-                    logging.error('Password,' + passowrd + ', for ' + userID + ' does not exist in the datastore.')
+                    logging.error('Password,' + password + ', for ' + userID + ' does not exist in the datastore.')
                     return False
                 else:
                     return True
         else:
             query.add_filter('password', '=', password)
             if len(list(query.fetch())) == 0:
-                logging.error('Password,' + passowrd + ', for ' + userID + ' does not exist in the datastore.')
+                logging.error('Password,' + password + ', for ' + userID + ' does not exist in the datastore.')
                 return False
             else:
                 return True

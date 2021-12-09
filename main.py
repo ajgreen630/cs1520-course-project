@@ -17,13 +17,12 @@ import time
 populate_words.main()
 ws = word_scrambler.WordScrambler()
 ub = user_base.UserBase()
-username = "ajgreen630"
-finish_time = ""
-best_time = ""
 time_list = []
 name_list = []
 
 app = flask.Flask(__name__)
+
+app.secret_key = 'BAD_SECRET_KEY'
 
 # Redirect to title page upon first entry:
 @app.route('/')
@@ -45,33 +44,29 @@ def login():
 @app.route('/validateLogin', methods=['POST'])
 def validateLogin():
     data = flask.request.get_json()
-    logging.error(type(data))
-    logging.error(data)
+    logging.error("In validateLogin()")
     logging.error(data["username"])
     logging.error(data["password"])
     
     if(ub.validate_login(data["username"], data["password"])):
         logging.error('User found!')
-        res = flask.make_response(flask.jsonify({"message": "User login successful."}), 200)
-        if(not ub.check_if_username_exists(data["username"])):  # Assumes username input is email, then stores the user's username.
-            logging.error('User ID is email, searching for username...')
-            username = ub.get_user_name()
-            logging.error('Found username, ' + username + '.')
-        else:   # Assumes username input is username, then stores the user's username.
-            logging.error('User ID is username.')
-            username = data["username"]
-        return res
-    else:
+        if(not ub.check_if_username_exists(data["username"])):  # Assumes username input is email, then stores the user's username in session.
+            flask.session['username'] = ub.get_user_name(data["username"])
+            res = flask.make_response(flask.jsonify({"message": "User login successful."}), 200)
+            return res
+        else:                                                   # Assumes username input is username, then stores the user's username in session.
+            flask.session['username'] = data["username"]
+            res = flask.make_response(flask.jsonify({"message": "User login successful."}), 200)
+            return res
+    else:                                                       # Assumes user ID was not found in the datastore.
         logging.error('Could not find, ' + data["username"] + ', in datastore.')
         res = flask.make_response(flask.jsonify({"message": "Credentials do not match!"}), 507)
         return res
 
 @app.route('/register', methods=['POST']) 
 def register():
-    logging.error("In register!")
     data = flask.request.get_json()
-    logging.error(type(data))
-    logging.error(data)
+    logging.error("In register()")
     logging.error(data["username"])
     logging.error(data["email"])
     logging.error(data["password"])
@@ -154,12 +149,19 @@ def maze():
 @app.route('/halloffame.html')
 def hall_of_fame():
     time.sleep(1)
+
     db_time_list = ub.get_time_descending()
+
+    logging.error("In hall_of_fame()")
+    logging.error(db_time_list)
 
     if len(db_time_list) < 5:
         for item in db_time_list:
+            if item["username"] == flask.session.get('username'):
+                flask.session['best_time'] = item["best_time"]
+                flask.session['finish_time'] = item['recent_time']
             name_list.append(item["username"])
-            time_list.append(item["time"] + " seconds")
+            time_list.append(item["best_time"] + " seconds")
         diff = 5 - len(db_time_list)
         count = 0
         while count < diff:
@@ -169,21 +171,28 @@ def hall_of_fame():
     else:
         count = 0
         for item in db_time_list:
+            if item["username"] == flask.session.get('username'):
+                flask.session['best_time'] = item["best_time"]
+                flask.session['finish_time'] = item['recent_time']
             name_list.append(item["username"])
-            time_list.append(item["time"] + " seconds")
+            time_list.append(item["best_time"] + " seconds")
             count = count + 1
             if (count == 5):
                 break
 
+    logging.error("Name list: ")
+    logging.error(name_list)
+    logging.error("Best list: ")
     logging.error(time_list)
+    finish_time = flask.session.get('finish_time')
+    best_time = flask.session.get('best_time')
     logging.error("Finish time: " + finish_time)
     logging.error("Best time: " + best_time)
 
-    time.sleep(1)
     return flask.render_template('leaderBoardPage.html', 
                                   page_title = 'Panther Central',
-                                  finish_time = finish_time,
-                                  best_time = best_time,
+                                  finish_time = flask.session.get('finish_time'),
+                                  best_time = flask.session.get('best_time'),
                                   first_spot_name = name_list[0],
                                   first_spot_time = time_list[0],
                                   second_spot_name = name_list[1],
@@ -197,21 +206,19 @@ def hall_of_fame():
 
 @app.route('/storeFinishTime', methods=['POST'])
 def store_finish_time():
-    logging.error("In store_finish_time()")
     data = flask.request.get_json()
-    logging.error(type(data))
+    logging.error("In store_finish_time()")
     logging.error(data)
     logging.error(data["time"])
 
-    finish_time = str(data["time"])
-    logging.error("Finish time in store_finish_time: " + finish_time)
+    flask.session['finish_time'] = str(data["time"])
+    flask.session['best_time'] = ub.update_time(flask.session.get('username'), data["time"])
 
-    best_time = str(ub.update_time(username, finish_time))
-
-    logging.error("Best time in store_finish_time: " + best_time)
+    logging.error('Finish time in current session: ' + flask.session.get('finish_time'))
+    logging.error('Best time for user ' + flask.session.get('username') + ': ' + flask.session.get('best_time'))
 
     res = flask.make_response(flask.jsonify({"message": "Successfully stored user's best time."}), 200)
-    time.sleep(2)
+    time.sleep(1)
     return res
     
 @app.route('/congratulations.html')

@@ -20,7 +20,8 @@ class UserBase():
                 "username" : username,
                 "email" : email, 
                 "password" : password,
-                "time" : "",
+                "best_time" : "",
+                "recent_time" : "",
             }
         )
         return user_entity
@@ -33,7 +34,7 @@ class UserBase():
     def update_time(self, username, time):
         finish_time = str(time)
         best_time = ""
-        logging.error("in update_time")
+        logging.error("In update_time() for UserBase()")
         logging.error(username)
         logging.error(finish_time)
 
@@ -43,36 +44,41 @@ class UserBase():
         
         user = list(query.fetch())[0]
         logging.error("Queried for user.  Username: " + user["username"])
-        logging.error("Most recent time: " + user["time"])
-        logging.error("Is time an empty string? " + str(user["time"] == ""))
+        logging.error("Most recent time: " + user["recent_time"])
+        logging.error("Is best time an empty string? " + str(user["best_time"] == ""))
 
-        if user["time"] == "":
-            logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["time"] +".")
+        if user["best_time"] == "":
+            logging.error("Most recent time, " + finish_time + ", is better than last best time, " + user["best_time"] +".")
             logging.error("It will replace " + username + "'s most recent time.")
-            user["time"] = finish_time
+            user["best_time"] = finish_time
+            user["recent_time"] = finish_time
             client.put(user)
             best_time = finish_time
+            return best_time
         else:
-            if int(finish_time) < int(user["time"]):
-                logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["time"] +".")
+            if int(finish_time) < int(user["best_time"]):
+                logging.error("Most recent time, " + finish_time + ", is better than last time, " + user["best_time"] +".")
                 logging.error("It will replace " + username + "'s most recent time.")
-                user["time"] = finish_time
+                user["best_time"] = finish_time
+                user["recent_time"] = finish_time
                 client.put(user)
                 best_time = finish_time
             else:
-                logging.error("Most recent time, " + finish_time + ", does not beat last time, " + user["time"] +".")
+                logging.error("Most recent time, " + finish_time + ", does not beat last time, " + user["best_time"] +".")
                 logging.error("It will not replace " + username + "'s most recent time.")
-                best_time = user["time"]
+                user["recent_time"] = finish_time
+                client.put(user)
+                best_time = user["best_time"]
         return best_time
 
     def get_time_descending(self):
         client = self.get_client()
         query = client.query(kind='User')
-        query.order = ["-time"]
+        query.order = ["-best_time"]
 
         ret_list = []
         for item in list(query.fetch()):
-            if item["time"] != "":
+            if item["best_time"] != "":
                 ret_list.append(item)
 
         return ret_list

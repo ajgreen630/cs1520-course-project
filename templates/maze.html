@@ -1,5 +1,7 @@
 {% extends '_base-2.html' %}
 {% block content %}
+                <!-- <div id="right"><img id = "picture" src="../static/images/SennottPics/01E.jpg" alt="Maze" style="width:70%;"></center></div> -->
+
     <head>
         <link rel="stylesheet" href="static/css/style.css"> 
         <script type="text/javascript" src="static/js/panther-central.js"></script>
@@ -7,13 +9,13 @@
     <!-- Page content -->
     <div class="main">
         <div class="heading">
-            Sennott Square Maze
+            <a>Sennott Square Maze</a>
         </div>
  <!-- This part should be in each page -->
  <!-- here you can add your code -->
     <div>
         <div class="timer">
-        <p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p>
+            <div class="time"><p><span id="countdownminutes">-</span>:<span id="countdownseconds">-</span></p></div>
 
         <script type="text/javascript">
             var timeleft = parseInt(localStorage.getItem("sennottTimer"));
@@ -56,14 +58,16 @@
             },1000);
         </script>
     </div>
-        <section id = "story"><center>
-        <h1>Find Room 5502</h1>
-                <img id = "picture" src="../static/images/SennottPics/01E.jpg" alt="Maze" style="width:70%;"></center>             
-                <center>
-                <button onclick="changeLeft()">Left</button>
-                <button onclick="goStraight()">Straight</button>
-                <button onclick="changeRight()">Right</button>
-                </center>
+        <section id = "story">
+            <center><h3>Find Room 5502</h3>
+                <button onclick="changeLeft()"" id="left">Left</button>
+                <button onclick="goStraight()" id="straight">Straight</button>
+                <button onclick="changeRight()" id="right">Right</button>
+            </center>
+            <center> <img id = "picture" src="../static/images/SennottPics/01E.jpg" alt="Maze" style="width:70%;"></center>
+           
+
+            </center>
                 <script type="text/javascript">
                     function changeRight() {
                         var image = document.getElementById('picture');

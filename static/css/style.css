@@ -2,6 +2,9 @@
 *{
     background-color: #0b0e07;
 }
+html { 
+    overflow-y: scroll; 
+}
 
 /* Style page content */
 .main {
@@ -25,7 +28,7 @@
     background-color: #e9c855;
     width: 99%;
     border-radius: 8px;
-    box-shadow:0px 0px 50px 30px #b49b41;
+    box-shadow:0px 0px 37px 30px #b49b41;
 
 }
 
@@ -160,14 +163,15 @@ input{
         color: white;
         background-color: transparent;
 	}
-    .headhillman h4{
+    .headhillman h1{
         color: white;
         background-color: #1c2c54;
         width: 60%;
         border-radius: 8px;
         margin: auto;
-        font-size:large;
-        margin-top: 2%;        
+        /* font-size:large; */
+        margin-top: 2%;      
+        padding: 1%;  
     }
     
     .map{
@@ -197,7 +201,7 @@ input{
     }
 
     .hillman1 {
-        width: 60%;
+        /* width: 60%; */
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -264,11 +268,22 @@ body {
    width: 60%;
     height: 800px;
     margin: auto;
-    background-color: #1c2c54;
+
     opacity: 0.9;
 }
 #story p{
     font-size: 40;
+}
+#story h3{
+    color: white;
+        background-color: #1c2c54;
+        width: 60%;
+        border-radius: 8px;
+        margin: auto;
+        font-size:large;
+        margin-top: 2%;      
+        padding: 1%;  
+        margin-bottom: 4%;
 }
 
 #picture {
@@ -297,4 +312,10 @@ button:hover{
     background-color: black;
     color: #f2c746;
 }
+
+#left, #right, #straight{
+    display: inline-block;
+    margin-bottom: 3%;
+}
+
         

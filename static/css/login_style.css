@@ -1,5 +1,5 @@
 body {
-	--color-primary: orange;
+	--color-primary: green;
 	--color-primary-dark: #007f67;
 	--color-secondary: red;
 	--color-error: #cc3333;
@@ -13,7 +13,7 @@ body {
 	justify-content: center;
 	font-size: 18px;
 	/*background: url(../Images/cathedral_title_page.png);*/
-	background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+	background: linear-gradient(to right, #FFDD3C, #001C57);
 	background-size: cover;
 }
 

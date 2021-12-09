@@ -89,6 +89,7 @@ function validation()
 			return response;
 		} else {
 			console.log(response);
+			display_error_message.classList.add("no__display");
 			throw new Error('Something went wrong...');
 		}
 	})
@@ -97,9 +98,9 @@ function validation()
 	})
 	.catch(function(error) {
 		console.log('Request failed ', error);
+		display_error_message.classList.add("no__display");
 	});
-
-	display_error_message.classList.add("no__display");
+	
 }
 
 //Using Datastore will change the whole function and syntax associated with it

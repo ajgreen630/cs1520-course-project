@@ -38,7 +38,7 @@ class UserBase():
         key = client.key('User', username)
         user = client.get(key)
 
-        if (time < user["time"]):
+        if (time < user["time"] or user["time"] == ""):
             logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
             logging.error("It will replace " + username + "'s most recent time.")
             user["time"] = time

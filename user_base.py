@@ -31,11 +31,25 @@ class UserBase():
         client.put(self.user_to_entity(username, email, password))
 
     def update_time(self, username, time):
+        finish_time = time
+        best_time = ""
+
         client = self.get_client()
         key = client.key('User', username)
         user = client.get(key)
-        user["time"] = time
-        client.put(user)
+
+        if (time < user["time"]):
+            logging.error("Most recent time, " + time + ", is better than last time, " + user["time"] +".")
+            logging.error("It will replace " + username + "'s most recent time.")
+            user["time"] = time
+            client.put(user)
+            best_time = finish_time
+        else:
+            logging.error("Most recent time, " + time + ", does not beat last time, " + user["time"] +".")
+            logging.error("It will not replace " + username + "'s most recent time.")
+            best_time = user["time"]
+        return best_time
+            
 
     def get_user_time(self, username):
         client = self.get_client()

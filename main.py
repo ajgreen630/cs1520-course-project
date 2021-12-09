@@ -17,6 +17,8 @@ populate_words.main()
 ws = word_scrambler.WordScrambler()
 ub = user_base.UserBase()
 username = ""
+finish_time = ""
+best_time = ""
 
 app = flask.Flask(__name__)
 
@@ -144,6 +146,21 @@ def sennott_square():
 @app.route('/halloffame.html')
 def hall_of_fame():
     return flask.render_template('leaderBoardPage.html')
+
+@app.route('/storeFinishTime', methods=['POST'])
+def store_finish_time():
+    data = flask.request.get_json()
+    logging.error(type(data))
+    logging.error(data)
+    logging.error(data["time"])
+
+    finish_time = data["time"]
+
+    best_time = ub.update_time(username, finish_time)
+
+    res = flask.make_response(flask.jsonify({"message": "Successfully stored user's best time."}), 200)
+
+    return res
 
 @app.route('/congratulations.html')
 def congratulations():

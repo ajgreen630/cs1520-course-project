@@ -71,7 +71,7 @@
 
         <form name="guessForm" id="guess_frm" action="/hillman-library">
             <input type="text" name="guess" id="guess_input" /><br>
-            <input type="submit" valid="Submit" onclick="validateForm(document.getElementById('unscrambledWord').textContent, document.getElementById('guess_input').value); localStorage.setItem('hillmanTimer', '120');  localStorage.setItem('pantherCentralStatus', 'cleared')"/>
+            <input type="submit" valid="Submit" onclick="validateForm(document.getElementById('unscrambledWord').textContent, document.getElementById('guess_input').value);document.getElementById('PCButton').setAttribute('href', '/panther-central'), localStorage.setItem('hillmanTimer', '120');  localStorage.setItem('pantherCentralStatus', 'cleared')"/>
         </form>
     </div>
 {% endblock %}

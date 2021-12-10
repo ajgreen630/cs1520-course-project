@@ -22,7 +22,8 @@ name_list = []
 
 app = flask.Flask(__name__)
 
-app.secret_key = 'BAD_SECRET_KEY'
+# TODO: REPLACE WITH YOUR OWN SESSION KEY WHEN RUNNING THIS PROJECT
+app.secret_key = ''
 
 # Redirect to title page upon first entry:
 @app.route('/')
